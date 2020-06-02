@@ -13,6 +13,7 @@ OpenBike is an open source bikesharing system.
 	* [Dragino LGT-92 Tracker hardware](https://github.com/dragino/Lora/tree/master/LGT-92)
 	* [Wifi Tracker firmware](https://github.com/stadtulm/Lora-Wifi-Location-Tracker)
 	* [Wifi Tracker hardware „Lortinchen“](https://github.com/stadtulm/Lora-Wifi-Location-Tracker/tree/master/hardware)
+	* [Manual Tracker from Eigenbaukombinat](https://github.com/Eigenbaukombinat/cykel-manual-tracker)
 * TTN Adapter
 	* [Dragino decoder](https://github.com/stadtulm/tracker-ttn-decoders/blob/master/lgt92-1.5.1.js)
 	* [Wifi Tracker decoder](https://github.com/stadtulm/Lora-Wifi-Location-Tracker/blob/master/ttn-decoder-script.js)
