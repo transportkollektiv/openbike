@@ -52,17 +52,35 @@ body {
     display: none;
 }
 
-a {
+.wy-menu-vertical li.current > a {
+    color: #404040;
+    font-weight: bold;
+    background: #e8e8e8;
+    border: none;
+}
+
+.wy-menu-vertical li.toctree-l1.current>a {
+    border: none;
+}
+
+a, a:visited {
     color: #687707;
 }
 
-a:hover {
+a:hover, a:focus {
     color: #a7ce38;
 }
 
-a:visited {
-    color: #4b5e17;
+.rst-content a {
+    color: #8ea20c;
+    border-bottom: 1px solid rgba(72,90,19,0.15);
 }
+
+.rst-content a:hover,
+.rst-content a:focus {
+    border-bottom: 1px solid rgba(72,90,19,0.50);
+}
+
 
 h1, h2, .rst-content .toctree-wrapper p.caption, h3, h4, h5, h6, legend {
     font-weight: 700;
@@ -91,6 +109,11 @@ footer {
     margin-right: 15px;
     font-weight: normal;
     align-items: start;
+}
+
+.rst-content .sectionbox,
+.rst-content .sectionbox:hover {
+    border-bottom: 0;
 }
 
 .sectionbox .fa {
