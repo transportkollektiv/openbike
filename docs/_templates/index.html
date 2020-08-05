@@ -1,0 +1,171 @@
+{% extends "layout.html" %}
+{% set title = 'Overview' %}
+{% block body %}
+<h1>Welcome to OpenBike's documentation</h1>
+<div>
+    <p>OpenBike is an open source bikesharing stack.
+    It helps you to provide a modern, 24/7, (web)app based rental service for bikes and other vehicles.
+    It includes open hardware for tracking devices attached to your bikes and provides adapter services for integrating different tracking and lock solutions.</p>
+
+    <p>We aim to make our documentation as up to date, usable and
+    complete as possible. We want you to be able understand, use, run, and
+    improve OpenBike. That said, documentation is never finished, and rarely
+    perfect. If there is anything unclear or missing in our documentation,
+    we'd be happy if you'd <a href="https://github.com/stadtulm/openbike/issues/new">let us know</a>.</p>
+</div>
+
+<h2>Documentation structure</h2>
+
+<div class="boxes">
+    <a href="administrator/index.html" class="sectionbox">
+        <span class="fa fa-server fa-fw"></span>
+        <div class="content">
+            <div class="heading">
+                <strong>Administrator documentation</strong>
+            </div>
+            <div class="text">
+                <p>
+                    You want to install and maintain OpenBike on your own server?
+                    Read about different ways to set things up.
+                </p>
+            </div>
+        </div>
+    </a>
+    <a href="operator/index.html" class="sectionbox">
+        <span class="fa fa-wrench fa-fw"></span>
+        <div class="content">
+            <div class="heading">
+                <strong>Operator documentation</strong>
+            </div>
+            <div class="text">
+                <p>
+                    You want to operate your own OpenBike based bikesharing?
+                    We've got you covered, with all the things we've learned.
+                </p>
+            </div>
+        </div>
+    </a>
+    <a href="user/index.html" class="sectionbox">
+        <span class="fa fa-bicycle fa-fw"></span>
+        <div class="content">
+            <div class="heading">
+                <strong>User documentation</strong>
+            </div>
+            <div class="text">
+                <p>
+                    You want to just rent a bike? 
+                    Look here for information how this works with OpenBike based systems.
+                </p>
+            </div>
+        </div>
+    </a>
+    <a href="developer/index.html" class="sectionbox">
+        <span class="fa fa-code fa-fw"></span>
+        <div class="content">
+            <div class="heading">
+                <strong>Developer docs</strong>
+            </div>
+            <div class="text">
+                <p>
+                    You want to contribute to OpenBike, either to fix bugs,
+                    or to introduce that feature you're missing?
+                    Setup instructions and helpful instructions are over here.
+                </p>
+            </div>
+        </div>
+    </a>
+    <a href="contents.html" class="sectionbox">
+        <span class="fa fa-list fa-fw"></span>
+        <div class="content">
+            <div class="heading">
+                <strong>Table of contents</strong>
+            </div>
+            <div class="text">
+                <p>
+                    A list of everything in our documentation.
+                    Don't forget to let us know if you can't find something!
+                </p>
+            </div>
+        </div>
+    </a>
+</div>
+
+<h2>Project information</h2>
+
+<div>
+    <p>The OpenBike source code is available in multiple repositories on
+    <a href="https://github.com/stadtulm/openbike">GitHub</a>, where you can
+    also find the issue tracker for each part. The documentation is available at
+    <a href="https://docs.openbike.ulm.dev">docs.openbike.ulm.dev</a>, and you can find
+    up to date information on <a href="https://ulm.dev/blog">our blog</a>.</p>
+
+    <p>OpenBike is published under the terms of the MIT License. The primary
+    maintainers of this project are people of the <a href="https://ulm.dev">City of Ulm, Digitale Agenda</a>,
+    who also run the <a href="https://openbike.ulm.dev">example deployment for employees of the City </a>.</p>
+
+    If you'd like to contribute to OpenBike, you are most welcome! We have written
+    a little about how to get started
+    <a href="https://docs.openbike.ulm.dev/developer/index.html">here</a>.
+    </p>
+</div>
+
+<h2>Useful links</h2>
+
+<div class="boxes">
+    <a href="https://ulm.dev/projects/openbike/" target="_blank" class="sectionbox">
+        <span class="fa fa-globe fa-fw"></span>
+        <div class="content">
+            <div class="heading">
+                <strong>Project website</strong>
+            </div>
+            <div class="text">
+                <p>
+                    ulm.dev is a easy entrypoint to the project and also
+                    the home of example deployment in the City of Ulm.
+                </p>
+            </div>
+        </div>
+    </a>
+    <a href="https://github.com/stadtulm/openbike" target="_blank" class="sectionbox">
+        <span class="fa fa-github fa-fw"></span>
+        <div class="content">
+            <div class="heading">
+                <strong>GitHub repositories</strong>
+            </div>
+            <div class="text">
+                <p>
+                    OpenBike is open source – you can find the complete source code for each of the parts
+                    in this overview of repositories.
+                </p>
+            </div>
+        </div>
+    </a>
+    <a href="https://ulm.dev/blog" target="_blank" class="sectionbox">
+        <span class="fa fa-newspaper-o fa-fw"></span>
+        <div class="content">
+            <div class="heading">
+                <strong>Project blog</strong>
+            </div>
+            <div class="text">
+                <p>
+                    Any relevant news about updates (and OpenBike in general) will be presented in our blog.
+                </p>
+            </div>
+        </div>
+    </a>
+    <a href="https://matrix.to/#/!ghOLficeAycydtkZtA:matrix.org?via=matrix.org" target="_blank" class="sectionbox">
+        <span class="fa fa-comments fa-fw"></span>
+        <div class="content">
+            <div class="heading">
+                <strong>Matrix channel</strong>
+            </div>
+            <div class="text">
+                <p>
+                    Discussions and help about installation, operation and new features for OpenBike and generally about bikesharing. All questions welcome!
+                </p>
+            </div>
+        </div>
+    </a>
+</div>
+
+{% endblock %}
