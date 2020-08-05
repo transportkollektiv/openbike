@@ -6,7 +6,12 @@ body {
 
 .wy-side-nav-search img,
 .wy-side-nav-search>a img.logo {
-    height: 70px;
+    height: 60px;
+    padding: 0;
+}
+
+.wy-side-nav-search>a {
+    margin-bottom: 0.4em;
 }
 
 .wy-nav-top {
@@ -41,6 +46,10 @@ body {
 
 .wy-breadcrumbs li.wy-breadcrumbs-aside a {
     padding-top: 0;
+}
+
+.wy-menu-vertical p.caption {
+    display: none;
 }
 
 a {

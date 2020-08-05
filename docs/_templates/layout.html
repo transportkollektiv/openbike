@@ -1,0 +1,9 @@
+{% extends "!layout.html" %}
+{% block extrahead %}
+{{ super() }}
+{# this is superseeded by html_ogp_meta in sphinx 3.2 #}
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="OpenBike documentation" />
+<meta property="og:image" content="{{ pathto('_static/images/openbike-og.png', 1) }}" />
+<meta name="twitter:card" content="summary" />
+{% endblock %}

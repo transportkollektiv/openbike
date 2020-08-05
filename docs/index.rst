@@ -5,7 +5,7 @@ Welcome to OpenBike's documentation
    :maxdepth: 2
    :caption: Contents:
 
-   administrator
-   operator
-   user
-   maintainer
+   administrator/index
+   operator/index
+   user/index
+   developer/index
