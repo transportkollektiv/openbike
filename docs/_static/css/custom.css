@@ -44,8 +44,8 @@ body {
     color: #687707;
 }
 
-.wy-breadcrumbs li.wy-breadcrumbs-aside a {
-    padding-top: 0;
+.wy-breadcrumbs li a {
+    padding-bottom: 0;
 }
 
 .wy-menu-vertical p.caption {
