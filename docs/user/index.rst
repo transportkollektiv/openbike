@@ -1,6 +1,6 @@
 .. _`user-index`:
 
-User documentation
+User Guide
 ===========================
 
 You want to ride an shared bike from an OpenBike based system? That’s great!
