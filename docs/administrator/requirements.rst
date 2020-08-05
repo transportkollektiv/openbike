@@ -20,7 +20,7 @@ To run OpenBike, you will need the following things:
 
 * A **Domain** and **access to DNS**. cykel and voorwiel run on different subdomains, so you need the ability to create multiple subdomains and point the `A` and `AAAA` DNS records to your server. 
 
-* One or multiple **Authentication Providers**. These are OAuth2-compatible services your users already have (like Google, Twitter, Instagram, GitHub, ...) or you run yourself (Nextcloud, Keycloak, ...). OpenBike is using **django-allauth** here, so look into `their documentation for the list of providers they already support <https://django-allauth.readthedocs.io/en/latest/providers.html>`_.
+* One or multiple **Authentication Providers**. These are OAuth2-compatible services your users already have (like Google, Twitter, Instagram, GitHub, ...) or you run yourself (Nextcloud, Keycloak, ...). OpenBike does not provide registration features by itself, so you don't have to handle email addresses and forgotten passwords. Instead, OpenBike is using **django-allauth** for integrating third-party login, so look into `their documentation for the list of providers they already support <https://django-allauth.readthedocs.io/en/latest/providers.html>`_.
 
 Additional, for building you also need:
 
