@@ -14,9 +14,9 @@ cluster. Also we provide hints for additional systems you may want to deploy.
    :caption: Contents:
 
    requirements
-   installation-basic
-   installation-docker
-   installation-k8s
+   installation/manual
+   installation/docker
+   installation/k8s
    configuration
    maintenance
    monitoring
