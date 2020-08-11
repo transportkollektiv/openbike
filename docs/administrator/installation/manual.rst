@@ -163,7 +163,7 @@ To create the directory right now (without waiting for your next reboot) run::
 
     # systemd-tmpfiles --create openbike.conf
 
-You can now run the following commands to enable and start the services::
+You can now run the following commands to enable and start the service::
 
     # systemctl daemon-reload
     # systemctl enable cykel
@@ -284,8 +284,6 @@ Next steps
 ----------
 
 Yay! You've installed cykel and voorwiel. To configure your new running bikesharing system and get access to the administration interface, read the :ref:`Configuration <configuration>` chapter.
-
-.. todo:: adapter
 
 .. _nginx: https://botleg.com/stories/https-with-lets-encrypt-and-nginx/
 .. _PostgreSQL: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-20-04

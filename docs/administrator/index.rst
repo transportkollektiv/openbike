@@ -19,5 +19,6 @@ cluster. Also we provide hints for additional systems you may want to deploy.
    installation/k8s
    configuration
    maintenance
+   tracker/manual
    monitoring
 
