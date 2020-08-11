@@ -9,19 +9,13 @@ Things that can't be configured graphically in the admin are provided as environ
 
 Only in some edge cases you may have to directly modify the ``cykel/settings.py``. 
 
-Admin Access
-------------
+Initial Admin Access
+--------------------
 
-For your first user with administrative rights, use djangos default way to `create a superuser`_:
+For your first user with administrative rights, use djangos default way to `create a superuser`_. Don't forget to run this as ``openbike`` and apply the venv::
 
-::
-
-	$ python manage.py createsuperuser
-
-
-.. todo:: expand this, add a section about how to add more people with administrative rights
-
-.. todo:: add a section about how to add more people with view only operation rights
+	$ source /srv/openbike/venv/bin/activate
+	(venv)$ python3 manage.py createsuperuser
 
 Site
 ----
@@ -89,6 +83,11 @@ GBFS
 `System short name`
 	If your display name is long, try to put a short, maybe appreviated version here.
 
+
+Additional Administrators
+-------------------------
+
+When people have authenticated already, you can set *staff status* and/or *superuser status* on their user profiles. They still need a password to authenticate with the administration interface, you can set this with the password reset link on their profile page.
 
 .. _create a superuser: https://docs.djangoproject.com/en/2.2/ref/django-admin/#createsuperuser
 
