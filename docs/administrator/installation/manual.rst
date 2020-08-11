@@ -5,7 +5,7 @@ This guide describes the installation of a installation of OpenBike with its com
 
 .. warning:: Even though we try to make it straightforward to run OpenBike, it still requires some Linux experience to get it right. 
 
-We wrote this guide based on our setup on the Linux distribution Ubuntu 20.04 but it should work very similar on other modern distributions, especially on all systemd-based ones.
+We wrote this guide based on our setup on the Linux distribution Ubuntu 18.04 but it should work very similar on other modern distributions, especially on all systemd-based ones.
 
 Requirements
 ------------
@@ -13,7 +13,7 @@ Requirements
 Please set up the following systems beforehand, we’ll not explain them here in detail (but see these links for external installation guides):
 
 * A HTTP reverse proxy, e.g. `nginx`_, Apache or Caddy to allow HTTPS connections
-* A `PostgreSQL`_ 9.5+ database server
+* A `PostgreSQL`_ 9.5+ database server with `PostGIS`_
 
 We also recommend that you use a firewall, although this is not a OpenBike-specific recommendation. If you’re new to Linux and firewalls, we recommend that you start with `ufw`_.
 
@@ -28,7 +28,7 @@ Unix user
 
 As we do not want to run the different OpenBike services as root, we first create a new unprivileged user::
 
-    # adduser openbike --disabled-password --home /srv/openbike
+    # adduser openbike  --system --disabled-password --shell /bin/bash --home /srv/openbike
 
 In this guide, all code lines prepended with a ``#`` symbol are commands that you need to execute on your server as
 ``root`` user (e.g. using ``sudo``); all lines prepended with a ``$`` symbol should be run by the unprivileged user.
@@ -42,13 +42,22 @@ of database managing tool or directly on our database's shell. For PostgreSQL, w
     # sudo -u postgres createuser openbike
     # sudo -u postgres createdb -O openbike openbike
 
+Additionally, GIS extensions must be enabled. For PostgreSQL with PostGIS, use::
+
+    # sudo -u postgres psql -d openbike -c "CREATE EXTENSION postgis;"
+
 Package dependencies
 --------------------
 
 To build and run cykel, you will need the following packages::
 
-    # apt install git build-essential python-dev python3-venv python3 python3-pip \
-                  python3-dev libpq-dev node
+    # apt install git build-essential python3 python3-dev python3-venv python3-pip libpq-dev libgdal-dev
+
+For nodejs, we recommend using the nodesource PPA to get the latest LTS version. Look into https://github.com/nodesource/distributions#deb for instructions to add the repository. A short, slightly dangerous way is here::
+
+    # curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+    # apt install -y nodejs
+
 
 Install cykel from source
 -------------------------
@@ -63,9 +72,10 @@ python installation::
 
 We now clone the cykel source and install the dependencies::
 
-    (venv)$ git clone https://github.com/stadtulm/cykel.git
+    (venv)$ git clone https://github.com/stadtulm/cykel.git /srv/openbike/cykel
     (venv)$ cd /srv/openbike/cykel
     (venv)$ pip3 install -U -r requirements.txt
+    (venv)$ pip3 install -U gunicorn
 
 
 Configure cykel
@@ -79,7 +89,7 @@ The following is the baseline of environment variables you have to set:
 
     SECRET_KEY=a1b2c3d4e5f6examplechangeit7g8h9
     DEBUG=0
-    DATABASE_URL=postgis://openbike:databaseuserpassword@localhost/openbike
+    DATABASE_URL=postgis:///openbike
     ALLOWED_HOSTS=api.dev.bike
     UI_SITE_URL=https://dev.bike/
     CORS_ORIGIN_WHITELIST=https://dev.bike
@@ -94,7 +104,7 @@ The following is the baseline of environment variables you have to set:
     .. warning:: Never deploy a site into production with DEBUG turned on.
 
 ``DATABASE_URL``
-    Here you have configure the access to your database in a format supported by `dj-database-url <https://github.com/jacobian/dj-database-url>`_. For PostgreSQL with PostGIS use ``postgis://username:password@host/database``
+    Here you have configure the access to your database in a format supported by `dj-database-url <https://github.com/jacobian/dj-database-url>`_. If your PostgreSQL with PostGIS is residing on the same host, try ``postgis:///openbike`` For user/password auth on another host, use ``postgis://username:password@host/database``
 
 ``ALLOWED_HOSTS``
     Comma seperated list of hostnames, where cykel is reachable at. 
@@ -125,15 +135,13 @@ named ``/etc/systemd/system/cykel.service`` with the following content::
     After=network.target
 
     [Service]
-    User=cykel
-    Group=cykel
-    PIDFile=/run/cykel/pid
-    User=cykel
+    User=openbike
     Group=nogroup
+    PIDFile=/run/openbike/cykel.pid
     WorkingDirectory=/srv/openbike/cykel
     ExecStart=/srv/openbike/venv/bin/gunicorn cykel.wsgi \
                     --name cykel \
-                    --pid /run/cykel/pid \
+                    --pid /run/openbike/cykel.pid \
                     --bind 127.0.0.1:8000 --access-logfile - 
     ExecReload=/bin/kill -s HUP $MAINPID
     KillSignal=SIGTERM
@@ -142,6 +150,18 @@ named ``/etc/systemd/system/cykel.service`` with the following content::
 
     [Install]
     WantedBy=multi-user.target
+
+This runs an gunicorn application server on localhost on port ``8000``. Requests are made to this port by our reverse proxy, which gets configured below.
+
+The referenced ``/run/openbike/cykel.pid`` pid file resides in a directory that does not exist yet. For these temporary directories, systemd brought us the tmpfiles mechanism.
+To create this directory, we create the file ``/etc/tmpfiles.d/openbike.conf`` with the following contents::
+
+    # Directory for openbike pid files
+    d /run/openbike 0755 openbike nogroup - -
+
+To create the directory right now (without waiting for your next reboot) run::
+
+    # systemd-tmpfiles --create openbike.conf
 
 You can now run the following commands to enable and start the services::
 
@@ -155,8 +175,8 @@ Get voorwiel source
 
 To let people rent the bikes, you need a visual interface. voorwiel is the default UI for cykel. The following steps are again executed as the ``openbike`` user::
 
-    $ git clone https://github.com/stadtulm/voorwiel.git
-    $ cd voorwiel
+    $ git clone https://github.com/stadtulm/voorwiel.git /srv/openbike/voorwiel
+    $ cd /srv/openbike/voorwiel
     $ npm install
 
 Configure voorwiel
@@ -269,6 +289,7 @@ Yay! You've installed cykel and voorwiel. To configure your new running bikeshar
 
 .. _nginx: https://botleg.com/stories/https-with-lets-encrypt-and-nginx/
 .. _PostgreSQL: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-20-04
+.. _PostGIS: https://postgis.net
 .. _Let's Encrypt: https://letsencrypt.org
 .. _ufw: https://en.wikipedia.org/wiki/Uncomplicated_Firewall
 .. _strong encryption settings: https://mozilla.github.io/server-side-tls/ssl-config-generator/
