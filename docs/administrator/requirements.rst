@@ -22,6 +22,8 @@ To run OpenBike, you will need the following things:
 
 * One or multiple **Authentication Providers**. These are OAuth2-compatible services your users already have (like Google, Twitter, Instagram, GitHub, ...) or you run yourself (Nextcloud, Keycloak, ...). OpenBike does not provide registration features by itself, so you don't have to handle email addresses and forgotten passwords. Instead, OpenBike is using **django-allauth** for integrating third-party login, so look into `their documentation for the list of providers they already support <https://django-allauth.readthedocs.io/en/latest/providers.html>`_.
 
+* A **map tile server**. The OpenBike frontend/map view is based on OpenStreetMap tiles. There exist a `whole lot of different styles and providers <https://wiki.openstreetmap.org/wiki/Tile_servers>`_. Please consult the usage policies for the different `tile servers`_ and choose one where not only the style fits you most but one you are also allowed to use - many tile servers are funded by donations. For larger OpenBike installations, bigger usage or commercial offerings, please `host your own tile server`_ or find a `suitable commercial provider <https://switch2osm.org/providers/>`_.
+
 Additional, for building you also need:
 
 * node.js, in the current LTS version
@@ -40,3 +42,5 @@ Additional, for more operational comfort and user feedback, you may want:
 
 .. _Let's Encrypt: https://letsencrypt.org
 .. _The Things Network: https://thethingsnetwork.org
+.. _tile servers: https://wiki.openstreetmap.org/wiki/Tile_servers
+.. _host your own tile server: https://switch2osm.org/serving-tiles/
