@@ -225,8 +225,8 @@ voorwiel and its configuration is built into a big bundle of javascript. Run the
 
 
 
-Reverse Proxy
--------------
+Reverse Proxy (nginx)
+---------------------
 
 The following snippet is an example on how to configure a nginx proxy for cykel and voorwiel::
 
@@ -278,6 +278,49 @@ The following snippet is an example on how to configure a nginx proxy for cykel 
 
 
 We recommend reading about setting `strong encryption settings`_ for your web server. Certbot provides these with the ``options-ssl-nginx.conf`` file.
+
+
+Reverse Proxy (apache2)
+-----------------------
+
+If you're using apache2 instead, the following snippet is an example on how to configure the reverse proxy for cykel and voorwiel in the apache2 format::
+
+    <VirtualHost *:443>
+      ServerName api.dev.bike
+
+      SSLCertificateFile /etc/letsencrypt/live/api.dev.bike/cert.pem
+      SSLCertificateKeyFile /etc/letsencrypt/live/api.dev.bike/privkey.pem
+      Include /etc/letsencrypt/options-ssl-apache.conf
+
+      Alias /static /srv/openbike/cykel/public
+      <Directory /srv/openbike/cykel/public>
+        Require all granted
+      </Directory>
+
+      ProxyPreserveHost On
+      RequestHeader set X-Forwarded-Proto 'https'
+      ProxyPass /static !
+      ProxyPass / http://127.0.0.1:8000/
+      ProxyPassReverse / http://127.0.0.1:8000/
+    </VirtualHost>
+    <VirtualHost *:443>
+      ServerName dev.bike
+
+      SSLCertificateFile /etc/letsencrypt/live/dev.bike/cert.pem
+      SSLCertificateKeyFile /etc/letsencrypt/live/dev.bike/privkey.pem
+      Include /etc/letsencrypt/options-ssl-apache.conf
+
+      DocumentRoot /srv/openbike/voorwiel/dist
+      <Directory /srv/openbike/voorwiel/dist>
+        Require all granted
+      </Directory>
+
+      FallbackResource /index.html
+    </VirtualHost>
+
+Do not forget to enable the *proxy*, *proxy_http* and the *headers* module.
+
+We recommend reading about setting `strong encryption settings`_ for your web server. Certbot provides these with the ``options-ssl-apache.conf`` file.
 
 
 Next steps
