@@ -2,6 +2,10 @@
 
 OpenBike is an open source bikesharing system.
 
+## Documentation
+
+The [docs directory](https://github.com/stadtulm/OpenBike/tree/master/docs) contains the documentation, you can find a [rendered version online](https://docs.openbike.ulm.dev/).
+
 ## Project overview
 
 ![](/img/openbike_structure.svg)

@@ -2,7 +2,7 @@ Manual tracker adapter deployment
 =================================
 
 To automatically update locations of your bikes, we use different type of trackers that send their position home.
-To make OpenBike fully flexible in which way trackers send their locations, we're using the concept of small adapter services that translate dthe different ways to send and receive a location to an HTTP call to cykel.
+To make OpenBike fully flexible in which way trackers send their locations, we're using the concept of small adapter services that translate the different ways to send and receive a location to an HTTP call to cykel.
 
 cykel-ttn
 ---------
@@ -12,9 +12,9 @@ If your system uses multiple different trackers that are all LoRaWAN/TTN based y
 
 Decoder
 ^^^^^^^
-To use the cykel-ttn adapter you need to convert the incoming bytes from your lora device to a readable format. The TTN Console supports decoders/converters and validators for this use case. Look into the `tracker-ttn-decoders`_ repository to find javascript, which you can use as decoder function.
+To use the cykel-ttn adapter you need to convert the incoming bytes from your lora device to a readable format. The TTN Console supports decoders/converters and validators for this use case. Look into the `tracker-ttn-decoders`_ repository to find javascript decoders for some trackers, which you can use as decoder function in the things network console. In general each tracker model needs its own decoder script, but they are often provided by the supplier.
 
-cykel-ttn expects ``latitude`` and ``longitude`` and/or ``vbat`` fields. Data packets without location are allowed in the case that the tracker doesn't know its location but wants to send its remaining battery status.
+cykel-ttn expects ``latitude`` and ``longitude`` and/or ``vbat`` fields. Data packets without location are allowed in the case that the tracker doesn't know its location but wants to send its remaining battery status. If fieldnames in decoder scripts differ, you can simply use the converter tab in the ttn console.
 
 Visit ``https://console.thethingsnetwork.org/applications/<application-id>/payload-formats`` to set the Payload Format to Custom and enter the decoder function there.
 
