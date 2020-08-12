@@ -32,7 +32,7 @@ cykel is using **django-allauth** for integrating third-party login, `their docu
 For configuring an Authentication Provider look into `Social Applications`. When you add a provider there, put the providers name in lowercase into the name field - this is used in the callback url. You also need to provide the OAuth2 client id and the client secret. Some providers call this differently, for these we've added instructions below.
 
 
-	.. note:: The **Callback URL** you are asked by the provider to put on their allow list is ``https://<host>/auth/<name>/login/callback/``
+	.. note:: The **Callback URL** you are asked by the provider to put on their allow list is ``https://<cykel host>/auth/<name>/login/callback/``
 			  
 			  The ``<name>`` is the name of your created social application in the cykel admin, this is why you should use short and lowercase provider names there.
 
