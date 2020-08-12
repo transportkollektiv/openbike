@@ -93,6 +93,7 @@ The following is the baseline of environment variables you have to set:
     ALLOWED_HOSTS=api.dev.bike
     UI_SITE_URL=https://dev.bike/
     CORS_ORIGIN_WHITELIST=https://dev.bike
+    USE_X_FORWARDED_PROTO=true
 
 
 ``SECRET_KEY``
@@ -114,6 +115,9 @@ The following is the baseline of environment variables you have to set:
 
 ``CORS_ORIGIN_WHITELIST``
     CORS origins to allow, i.e. the frontend URL (with scheme, without path)
+
+``USE_X_FORWARDED_PROTO``
+    If you're serving cykel behind a reverse proxy (like in this manual), set this to ``true``, so the ``X-Forwarded-Proto`` header gets interpreted and URLs are built correctly with https.
 
 Prepare cykel for first run
 ---------------------------
