@@ -20,9 +20,9 @@ For your first user with administrative rights, use djangos default way to `crea
 Site
 ----
 
-Cykel needs to know how to refer to itself. This is used in login redirects, so we have to make sure this value is correct.
+Cykel needs to know how to refer to itself. This is used in login redirects, so we have to make sure this value is correct. The configuration happens within djangos default *Site* model, so you have to configure it in the Sites section in the administration. This already contains an ``example.com`` site right after the installation - just edit this first entry.
 
-The Site can be configured in the admin, just edit the first site that is already there after the installation. The domain name must equal the cykel installation domain name, the display name can be the name where your voorwiel UI is reachable at.
+For the configuration: The **domain name** must equal the cykel installation domain name, the **display name** should be the name where your voorwiel UI is reachable at.
 
 Authentication Providers
 ------------------------
