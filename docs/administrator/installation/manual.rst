@@ -91,7 +91,7 @@ The following is the baseline of environment variables you have to set:
     DEBUG=0
     DATABASE_URL=postgis:///openbike
     ALLOWED_HOSTS=api.dev.bike
-    UI_SITE_URL=https://dev.bike/
+    UI_SITE_URL=https://dev.bike
     CORS_ORIGIN_WHITELIST=https://dev.bike
     USE_X_FORWARDED_PROTO=true
 
@@ -111,7 +111,7 @@ The following is the baseline of environment variables you have to set:
     Comma seperated list of hostnames, where cykel is reachable at. 
 
 ``UI_SITE_URL``
-    The full URL to your deployment of voorwiel. This is used to redirect the user after the login.
+    The full URL to your deployment of voorwiel. This is used to redirect the user after the login. Do not use a trailing slash here!
 
 ``CORS_ORIGIN_WHITELIST``
     CORS origins to allow, i.e. the frontend URL (with scheme, without path)
