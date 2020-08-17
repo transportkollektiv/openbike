@@ -7,7 +7,7 @@ To make OpenBike fully flexible in which way trackers send their locations, we'r
 cykel-ttn
 ---------
 In this case, we're looking at the LoRaWAN based location trackers that send their data over the publicly available `The Things Network`_ (TTN).
-The `cykel-ttn`_ adapter is a generic TTN adapter for GPS devices that supports lat/lon, accuracy and battery voltage status.
+The `cykel-ttn`_ adapter is a generic TTN adapter for GPS devices that supports lat/lon, accuracy and battery voltage status. It connects via MQTT to TTN and receives the incoming data packets from the trackers near instantly.
 If your system uses multiple different trackers that are all LoRaWAN/TTN based you can deploy cykel-ttn once and just use different configuration. More to this usage below.
 
 Decoder
