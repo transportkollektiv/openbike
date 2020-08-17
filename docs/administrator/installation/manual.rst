@@ -1,3 +1,5 @@
+.. _`installation/manual`:
+
 Manual deployment
 =================
 
@@ -181,7 +183,7 @@ To let people rent the bikes, you need a visual interface. voorwiel is the defau
 
     $ git clone https://github.com/stadtulm/voorwiel.git /srv/openbike/voorwiel
     $ cd /srv/openbike/voorwiel
-    $ npm install
+    $ npm ci
 
 Configure voorwiel
 ------------------
