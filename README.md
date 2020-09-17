@@ -12,6 +12,7 @@ The [docs directory](https://github.com/stadtulm/OpenBike/tree/master/docs) cont
 
 * [„Cykel“](https://github.com/stadtulm/cykel) (django backend)
 * [„Voorwiel“](https://github.com/stadtulm/voorwiel) (customer frontend website)
+* [„skoetsel“](https://github.com/stadtulm/skoetsel) (optional backend map for service and maintenance crew)
 * Tracker
 	* [Dragino LGT-92 Tracker firmware](https://github.com/dragino/LGT-92_-LoRa_GPS_Tracker/)
 	* [Dragino LGT-92 Tracker hardware](https://github.com/dragino/Lora/tree/master/LGT-92)
