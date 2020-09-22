@@ -42,3 +42,11 @@ voorwiel
     $ git pull
     $ npm ci
     $ NODE_ENV=production NPM_CONFIG_PRODUCTION=true npm run build
+
+skoetsel
+^^^^^^^
+
+::
+
+    $ cd /srv/openbike/skoetsel
+    $ git pull
