@@ -229,12 +229,24 @@ voorwiel and its configuration is built into a big bundle of javascript. Run the
 
     $ NODE_ENV=production NPM_CONFIG_PRODUCTION=true npm run build
 
+Get skoetsel source
+-------------------
+
+To help yourself operating the sharing, having an easier look at the bikes for maintenance etc, skoetsel is the UI for operators and maintenance staff. The following steps are again executed as the ``openbike`` user::
+
+    $ git clone https://github.com/stadtulm/skoetsel.git /srv/openbike/skoetsel
+    $ cd /srv/openbike/skoetsel
+
+Configure skoetsel
+------------------
+
+skoetsel is currently in a very alpha state of development. The only configuration change you can currently do, is to set the URL to the api. For this, open the ``index.html`` and set the ``API_URL`` to your base URL of cykel.
 
 
 Reverse Proxy (nginx)
 ---------------------
 
-The following snippet is an example on how to configure a nginx proxy for cykel and voorwiel::
+The following snippet is an example on how to configure a nginx proxy for cykel, skoetsel and voorwiel::
 
     server {
         server_name api.dev.bike;
@@ -265,6 +277,23 @@ The following snippet is an example on how to configure a nginx proxy for cykel 
         ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
     }
     server {
+        server_name care.dev.bike;
+
+        root /srv/openbike/skoetsel;
+        index index.html index.htm;
+
+        location / {
+            try_files $uri $uri/ /index.html;
+        }
+
+        listen [::]:443 ssl; # managed by Certbot
+        listen 443 ssl; # managed by Certbot
+        ssl_certificate /etc/letsencrypt/live/care.dev.bike/fullchain.pem; # managed by Certbot
+        ssl_certificate_key /etc/letsencrypt/live/care.dev.bike/privkey.pem; # managed by Certbot
+        include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+        ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+    }
+    server {
         server_name dev.bike;
 
         root /srv/openbike/voorwiel/dist;
@@ -289,7 +318,7 @@ We recommend reading about setting `strong encryption settings`_ for your web se
 Reverse Proxy (apache2)
 -----------------------
 
-If you're using apache2 instead, the following snippet is an example on how to configure the reverse proxy for cykel and voorwiel in the apache2 format::
+If you're using apache2 instead, the following snippet is an example on how to configure the reverse proxy for cykel, skoetsel and voorwiel in the apache2 format::
 
     <VirtualHost *:443>
       ServerName api.dev.bike
@@ -308,6 +337,20 @@ If you're using apache2 instead, the following snippet is an example on how to c
       ProxyPass /static !
       ProxyPass / http://127.0.0.1:8000/
       ProxyPassReverse / http://127.0.0.1:8000/
+    </VirtualHost>
+    <VirtualHost *:443>
+      ServerName care.dev.bike
+
+      SSLCertificateFile /etc/letsencrypt/live/care.dev.bike/cert.pem
+      SSLCertificateKeyFile /etc/letsencrypt/live/care.dev.bike/privkey.pem
+      Include /etc/letsencrypt/options-ssl-apache.conf
+
+      DocumentRoot /srv/openbike/skoetsel
+      <Directory /srv/openbike/skoetsel>
+        Require all granted
+      </Directory>
+
+      FallbackResource /index.html
     </VirtualHost>
     <VirtualHost *:443>
       ServerName dev.bike

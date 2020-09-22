@@ -7,6 +7,8 @@ To run OpenBike, you will need the following things:
 
 * **voorwiel**, the frontend
 
+* **skoetsel**, the operator/maintenance ui
+
 * Python ≥ 3.7
 
 * **A database**. This needs to be a **PostgreSQL Database with PostGIS**. SQLite is supported not supported anymore.
