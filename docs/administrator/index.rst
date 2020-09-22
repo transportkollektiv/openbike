@@ -18,6 +18,7 @@ cluster. Also we provide hints for additional systems you may want to deploy.
    installation/docker
    installation/k8s
    configuration
+   customization
    maintenance
    tracker/manual
    monitoring

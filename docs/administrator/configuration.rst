@@ -71,6 +71,8 @@ Automatic hiding
 
 In some cases, you may want to hide bikes that didn't report a location for some hours from the GBFS (and therefore the user visible map).
 
+.. _configuration-cykel-gbfs:
+
 GBFS
 ^^^^
 

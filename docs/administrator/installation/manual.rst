@@ -185,6 +185,9 @@ To let people rent the bikes, you need a visual interface. voorwiel is the defau
     $ cd /srv/openbike/voorwiel
     $ npm ci
 
+
+.. _configure-voorwiel:
+
 Configure voorwiel
 ------------------
 
@@ -200,6 +203,7 @@ The configuration of voorwiel currently still happens before the build process. 
     var GBFS_URL = SYSTEM_URL + "/gbfs/gbfs.json";
     var DEFAULT_LOCATION = [48.3984, 9.9908];
     var DEFAULT_ZOOM = 15;
+    var I18N_MESSAGE_OVERRIDE = {};
     var SUPPORT_TYPE;
     var SUPPORT_URL;
     var SENTRY_DSN;
@@ -219,6 +223,9 @@ The configuration of voorwiel currently still happens before the build process. 
 
 ``DEFAULT_ZOOM``
     Zoom level for the default view of the map
+
+
+.. _deploy-voorwiel:
 
 Deploy voorwiel
 ---------------
