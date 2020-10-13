@@ -243,11 +243,16 @@ To help yourself operating the sharing, having an easier look at the bikes for m
 
     $ git clone https://github.com/stadtulm/skoetsel.git /srv/openbike/skoetsel
     $ cd /srv/openbike/skoetsel
+    $ npm ci
 
-Configure skoetsel
+Configure and deploy skoetsel
 ------------------
 
-skoetsel is currently in a very alpha state of development. The only configuration change you can currently do, is to set the URL to the api. For this, open the ``index.html`` and set the ``API_URL`` to your base URL of cykel.
+skoetsel is currently in a very beta state of development. The only configuration change you have to do, is to set the URL to the api. 
+
+::
+    $ export API_URL=https://api.dev.bike 
+    $ npm run generate
 
 
 Reverse Proxy (nginx)
@@ -286,7 +291,7 @@ The following snippet is an example on how to configure a nginx proxy for cykel,
     server {
         server_name care.dev.bike;
 
-        root /srv/openbike/skoetsel;
+        root /srv/openbike/skoetsel/dist;
         index index.html index.htm;
 
         location / {
