@@ -72,8 +72,21 @@ Newer generations of trackers are using 4G Based Narrowband IoT M2M Protocols on
 Keep in mind, that you need a SIM-Card (or E-Sim konfiguration) for each celluar based tracker. There are more and more mobile plans for IoT based applications, even some with shared data contracts between sim cards. But keep in mind there will be a monthly costs for each tracker in operation.
 
 
-Lora-WAN
-""""""""
+Lora-WAN / The Things Network
+"""""""""""""""""""""""""""""
+
+Lora-WAN is a protocol for small bandwith IoT networks operating in a license free frequency band. Dependend on configuration and local circumstances it can achieve transmission distances between a few hundered meters up to thens of kilometers. Most prominend example of Lora-WAN networks is the crowd sourced The Things Network. The network is free to use (under consideration of community rules) and everyone can add coverage by adding own gateways to the network.
+
+Transmitting data via Lora-WAN is extremely energy efficient. The amount of data which can transmitted via Lora-WAN is very limited, but it fits exactly the needs of a location tracker for a sharing system.
+
+.. note:: Before buying Lora-WAN hardware check which frequency band is used in your country.
+
+The Things Network provides a `map mit all active gateways <https://www.thethingsnetwork.org/map>`_. The placement of gateways is very different, so the project `TTN Mapper is crowdsourcing a coverage map <https://ttnmapper.org/>`_.
 
 Using users smartphone
 """"""""""""""""""""""
+
+.. warning:: Using geolocation from users smartphone opens the possibility for users to fake the bike location.
+
+There are some possibilities to transfare data via bluetooth from a tracker to a users smartphones which than transmit that data to the Server. That only works if user using a native app. Currently there is no native app for OpenBike.
+It is possible to use the GPS of users smartphone via the Webapp. OpenBike is currently is using that for start and end of an rent, but that ist more an optional geolocation source, because using that geolocation is not enforced. 
