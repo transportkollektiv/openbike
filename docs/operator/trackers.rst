@@ -39,6 +39,8 @@ So there are some ways and tradeoffs to extend the runtime of these battieres:
 - It is recommended to use trackers with acceloration sensors. They can be konfigured to only wake up the GNSS-Sensor on movement. In most sharing systems, the vehicles are parked for the most of the time, so this should save a lot of energy. Some trackers allow to have a different wakeup intervall in moving state and in parking state.
 - Acquiring an new geolocation after a sleep coasts some time. The first geolocations the sensor is detecting after a sleep are ver unprecise, and the imprecision can be hundreds of meters, even kilometers. I can take some minutes unitl the precision is "good enough". So you have to decide what "good enough" means - so there is s tradeof between energy consumption and precision. Many trackers are able to configure a maxium time for location acquiring and a minimum precision.
 
+Using wifi for geolocation calulation can be a good backup strategy if GNSS trackers are running out of batteries or vehicles are parked on places with no GNSS Signal.
+
 Wifi
 """"
 
@@ -56,8 +58,19 @@ The precision is extremely dependend on the number of visble wifi networks and t
 Data transmission
 ^^^^^^^^^^^^^^^^^
 
+After location calculation, this data needs to be transmitted to the OpenBike system.
+
 Cellular
 """"""""
+
+Mobile phone networks have good coverage and the data we want to transmit is very small, so the usage of 2G Networks is widely available way to transmit data. GPRS Moduls are very cheap, which result in very cheap ready to use products. Depending on the Modules transmission of Data via GPRS can be very energy consuming.
+
+.. warning:: 2G networks are not futureprove. Provider all around the world are fading out the support of 2G networks or even have them  shutted down completly.
+
+Newer generations of trackers are using 4G Based Narrowband IoT M2M Protocols on the mobile phone networks, but we don't have experiance with that kind of devices. In theory this should be more energy efficient than GPRS-Based systems.
+
+Keep in mind, that you need a SIM-Card (or E-Sim konfiguration) for each celluar based tracker. There are more and more mobile plans for IoT based applications, even some with shared data contracts between sim cards. But keep in mind there will be a monthly costs for each tracker in operation.
+
 
 Lora-WAN
 """"""""
