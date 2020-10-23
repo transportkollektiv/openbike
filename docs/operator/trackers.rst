@@ -37,10 +37,21 @@ So there are some ways and tradeoffs to extend the runtime of these battieres:
 
 - The GNSS Sensor should not running all the time and instead wake up in bigger time intervals.
 - It is recommended to use trackers with acceloration sensors. They can be konfigured to only wake up the GNSS-Sensor on movement. In most sharing systems, the vehicles are parked for the most of the time, so this should save a lot of energy. Some trackers allow to have a different wakeup intervall in moving state and in parking state.
-- Acquiring an new geolocation after a sleep coasts some time. The first geolocations the sensor is detecting after a sleep are ver unprecise. I can take some minutes unitl the precision is "good enough". So you have to decide what "good enough" means - so there is s tradeof between energy consumption and precision. Many trackers are able to configure a maxium time for location acquiring and a minimum precision.
+- Acquiring an new geolocation after a sleep coasts some time. The first geolocations the sensor is detecting after a sleep are ver unprecise, and the imprecision can be hundreds of meters, even kilometers. I can take some minutes unitl the precision is "good enough". So you have to decide what "good enough" means - so there is s tradeof between energy consumption and precision. Many trackers are able to configure a maxium time for location acquiring and a minimum precision.
 
 Wifi
 """"
+
+Acquiring a `geolocation using wifi <https://en.wikipedia.org/wiki/Wi-Fi_positioning_system>`_ is a very common on smartphones, because it allows approximate a geolocation without starting the energy intensive GNSS chip. With this method the device is scanning wifi networks around and then match them against a database. This database contains the hardware addresses of wifi networks and where they have been detected before. For these method it is essential, that the scanned wifi networks have been mapped with it geolocation to the database before. 
+It would is very time-consuming to create such a database. So there are some providers which mapped nearly the whole world with the help of smartphones. `Google is providing access <https://developers.google.com/maps/documentation/geolocation/overview>`_ to the biggest of these databases, but the usage is expensive (currently $4 per 1000 location calculations). There are also other commecial providers.
+
+For non-commercial projects `Mozilla Locations Services <https://location.services.mozilla.com/>`_ is an alternative with a good coverage in many places. Also the coverage can be improved by everyone with an android smartphone by using the mozilla stumbler app. The problem ist, that the future of this project is a bit unclear. But the underlying software of mozilla location services `is open source <https://github.com/mozilla/ichnaea/>`_ and can be used to create a own database.
+
+The big advantage of Wifi location calculation is, the very low energy consumption and extreme low startup time compared to GNSS-Systems. It also works indoor and other enviroments without a view to the sky.
+
+The disadvantages of Wifi location calculation are, that it works only in populated areas, where wifi networks are visable. Even bigger parks in cities could be a problem, but it is really dependend on the enviroment. Another problem is the depedency on a loaction database services and that the database need coverage of the taget area.
+
+The precision is extremely dependend on the number of visble wifi networks and the databse quality. Results between 10 and 100 meters are typical.
 
 Data transmission
 ^^^^^^^^^^^^^^^^^
@@ -50,3 +61,6 @@ Cellular
 
 Lora-WAN
 """"""""
+
+Using users smartphone
+""""""""""""""""""""""
