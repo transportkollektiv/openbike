@@ -246,7 +246,7 @@ To help yourself operating the sharing, having an easier look at the bikes for m
     $ npm ci
 
 Configure and deploy skoetsel
-------------------
+-----------------------------
 
 skoetsel is currently in a very beta state of development. The only configuration change you have to do, is to set the URL to the api. 
 

@@ -34,7 +34,7 @@ Restart the service with the following command:
     # systemctl restart cykel
 
 voorwiel
-^^^^^^^
+^^^^^^^^
 
 ::
 
@@ -44,7 +44,7 @@ voorwiel
     $ NODE_ENV=production NPM_CONFIG_PRODUCTION=true npm run build
 
 skoetsel
-^^^^^^^
+^^^^^^^^
 
 ::
 
