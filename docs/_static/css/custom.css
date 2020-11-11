@@ -15,11 +15,11 @@ body {
 }
 
 .wy-nav-top {
-    background-color: #a7ce38;
+    background-color: #afca0b;
 }
 
 .wy-side-nav-search {
-    background-color: #a7ce38;
+    background-color: #afca0b;
 }
 
 .wy-side-nav-search input[type=text] {
@@ -68,7 +68,7 @@ a, a:visited {
 }
 
 a:hover, a:focus {
-    color: #a7ce38;
+    color: #afca0b;
 }
 
 .rst-content a {
@@ -118,7 +118,7 @@ footer {
 
 .sectionbox .fa {
     font-size: 40px;
-    color: #a7ce38;
+    color: #afca0b;
     margin-right: 8px;
     min-width: 48px;
 }
@@ -131,7 +131,7 @@ footer {
 }
 
 .sectionbox .heading {
-    color: #a7ce38;
+    color: #afca0b;
     font-size: 20px;
 }
 

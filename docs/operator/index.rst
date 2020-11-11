@@ -13,6 +13,7 @@ and try to document all the pitfalls, so you don't have to repeat our mistakes.
    :caption: Contents:
 
    bikes
+   brand
    locks
    trackers
 
