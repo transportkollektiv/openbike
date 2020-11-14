@@ -4,6 +4,12 @@ Brand guidelines
 ================
 
 You may use the OpenBike name and logo if you operate a (bike) sharing system in order to show that it is based the OpenBike software.
+OpenBike is the software stack.
+Your local deployment is whatever you want to call it, and it will be using the OpenBike software stack.
+
+In our initial test deployment we also called that deployment “OpenBike”.
+In retrospect, this might not have been the smartest move and should have been a different name.
+But here we are, and if you feel you absolutely *must* call your deployment something like “OpenBike $cityname”, that is within your rights and possible.
 
 Logo
 ----
