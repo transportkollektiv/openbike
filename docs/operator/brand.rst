@@ -3,7 +3,7 @@
 Brand guidelines
 ================
 
-You may use the OpenBike name and logo if you operate a (bike) sharing system in order to show that it is based the OpenBike software.
+You may use the OpenBike name and logo if you operate a (bike) sharing system in order to show that it is based on the OpenBike software.
 OpenBike is the software stack.
 Your local deployment is whatever you want to call it, and it will be using the OpenBike software stack.
 
