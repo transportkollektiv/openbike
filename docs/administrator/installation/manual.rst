@@ -251,6 +251,7 @@ Configure and deploy skoetsel
 skoetsel is currently in a very beta state of development. The only configuration change you have to do, is to set the URL to the api. 
 
 ::
+
     $ export API_URL=https://api.dev.bike 
     $ npm run generate
 
@@ -357,8 +358,8 @@ If you're using apache2 instead, the following snippet is an example on how to c
       SSLCertificateKeyFile /etc/letsencrypt/live/care.dev.bike/privkey.pem
       Include /etc/letsencrypt/options-ssl-apache.conf
 
-      DocumentRoot /srv/openbike/skoetsel
-      <Directory /srv/openbike/skoetsel>
+      DocumentRoot /srv/openbike/skoetsel/dist
+      <Directory /srv/openbike/skoetsel/dist>
         Require all granted
       </Directory>
 
