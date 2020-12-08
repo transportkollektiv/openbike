@@ -50,3 +50,5 @@ skoetsel
 
     $ cd /srv/openbike/skoetsel
     $ git pull
+    $ export API_URL=https://api.dev.bike 
+    $ npm run generate
