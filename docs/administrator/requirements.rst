@@ -11,7 +11,9 @@ To run OpenBike, you will need the following things:
 
 * Python ≥ 3.7
 
-* **A database**. This needs to be a **PostgreSQL Database with PostGIS**. SQLite is supported not supported anymore.
+* **A database**. This needs to be a **PostgreSQL Database with PostGIS**. SQLite is not supported anymore.
+
+* **redis**, for coordiation of the background workers
 
 * A **reverse proxy**. While django is capable of serving static files, a proper web server with reverse proxy capabilities like **nginx**, **Apache** or **Caddy** is a much better idea. Additionally the web server provides all the TLS encryption (https).
 

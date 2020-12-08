@@ -31,7 +31,7 @@ Restart the service with the following command:
 
 ::
 
-    # systemctl restart cykel
+    # systemctl restart cykel cykel-worker
 
 voorwiel
 ^^^^^^^^

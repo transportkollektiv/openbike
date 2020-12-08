@@ -16,6 +16,7 @@ Please set up the following systems beforehand, we’ll not explain them here in
 
 * A HTTP reverse proxy, e.g. `nginx`_, Apache or Caddy to allow HTTPS connections
 * A `PostgreSQL`_ 9.5+ database server with `PostGIS`_
+* `Redis`_, as a message broker for the asynchronous workers
 
 We also recommend that you use a firewall, although this is not a OpenBike-specific recommendation. If you’re new to Linux and firewalls, we recommend that you start with `ufw`_.
 
@@ -92,6 +93,7 @@ The following is the baseline of environment variables you have to set:
     SECRET_KEY=a1b2c3d4e5f6examplechangeit7g8h9
     DEBUG=0
     DATABASE_URL=postgis:///openbike
+    REDIS_URL=redis://localhost:6379/0
     ALLOWED_HOSTS=api.dev.bike
     UI_SITE_URL=https://dev.bike
     CORS_ORIGIN_WHITELIST=https://dev.bike
@@ -108,6 +110,9 @@ The following is the baseline of environment variables you have to set:
 
 ``DATABASE_URL``
     Here you have configure the access to your database in a format supported by `dj-database-url <https://github.com/jacobian/dj-database-url>`_. If your PostgreSQL with PostGIS is residing on the same host, try ``postgis:///openbike`` For user/password auth on another host, use ``postgis://username:password@host/database``
+
+``REDIS_URL``
+    The URL which contains the host and port where your redis-server is running at. The used format is ``redis://[:password@]host[:port][/db-number]``, if redis is running on the same host, try ``redis://localhost:6379/0``.
 
 ``ALLOWED_HOSTS``
     Comma seperated list of hostnames, where cykel is reachable at. 
@@ -175,6 +180,32 @@ You can now run the following commands to enable and start the service::
     # systemctl enable cykel
     # systemctl start cykel
 
+Run cykel worker as a service
+------------------------------
+
+Some tasks cykel is doing are best run in the background. For this, we're using `celery`_, which provides us seperate processes to run these tasks without impacting the api and administration interfaces.
+
+To keep a worker running in the background, create a file named ``/etc/systemd/system/cykel-worker.service`` with the following content::
+
+    [Unit]
+    Description=cykel background worker
+    After=network.target redis-server.service
+
+    [Service]
+    User=openbike
+    Group=nogroup
+    WorkingDirectory=/srv/openbike/cykel
+    ExecStart=/srv/openbike/venv/bin/celery -A cykel worker -l INFO -B
+    Restart=on-failure
+
+    [Install]
+    WantedBy=multi-user.target
+
+You can now again run the following commands to enable and start the background service::
+
+    # systemctl daemon-reload
+    # systemctl enable cykel-worker
+    # systemctl start cykel-worker
 
 Get voorwiel source
 -------------------
@@ -393,6 +424,8 @@ Yay! You've installed cykel and voorwiel. To configure your new running bikeshar
 .. _nginx: https://botleg.com/stories/https-with-lets-encrypt-and-nginx/
 .. _PostgreSQL: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-20-04
 .. _PostGIS: https://postgis.net
+.. _Redis: https://redis.io
 .. _Let's Encrypt: https://letsencrypt.org
 .. _ufw: https://en.wikipedia.org/wiki/Uncomplicated_Firewall
 .. _strong encryption settings: https://mozilla.github.io/server-side-tls/ssl-config-generator/
+.. _celery: https://docs.celeryproject.org
