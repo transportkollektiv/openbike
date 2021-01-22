@@ -24,3 +24,6 @@ The [docs directory](https://github.com/stadtulm/OpenBike/tree/master/docs) cont
 	* [Wifi Tracker decoder](https://github.com/stadtulm/Lora-Wifi-Location-Tracker/blob/master/ttn-decoder-script.js)
 	* [Cykel-TTN Adapter for GPS-Trackers](https://github.com/stadtulm/cykel-ttn)
 	* [Cykel-TTN Adapter for Wifi-Trackers](https://github.com/stadtulm/cykel-ttn-wifi)
+* Locks
+	* [Cykel Adapter for Jimi/Concox the BL10 Bluetooth/GSM Lock](https://github.com/stadtulm/cykel-lock-bl10)
+	* [Cykel Adapter for Omni Bluetooth/GSM Locks](https://github.com/stadtulm/cykel-lock-omni)
