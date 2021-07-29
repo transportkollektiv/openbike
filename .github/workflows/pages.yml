@@ -1,0 +1,26 @@
+name: build and deploy to gh pages
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build
+      run: |
+        docker run \
+        -v ${{ github.workspace }}:/srv/site \
+        -v ${{ github.workspace }}/html:/srv/site/docs/_build/html \
+        python:3.8-buster \
+        /bin/bash -c "chmod -R 777 /srv/site; cd /srv/site/docs; pip install -r requirements.txt && make html"
+    - name: Deploy to GitHub Pages
+      uses: crazy-max/ghaction-github-pages@v2.5.0
+      with:
+        keep_history: true
+        build_dir: html
+        jekyll: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
