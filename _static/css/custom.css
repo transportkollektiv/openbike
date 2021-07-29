@@ -1,0 +1,153 @@
+body {
+    font-family: "Open Sans", Helvetica, "Helvetica Neue", Arial, sans-serif;
+    font-weight: normal;
+    color: #404040;
+}
+
+.wy-side-nav-search img,
+.wy-side-nav-search>a img.logo {
+    height: 60px;
+    padding: 0;
+}
+
+.wy-side-nav-search>a {
+    margin-bottom: 0.4em;
+}
+
+.wy-nav-top {
+    background-color: #afca0b;
+}
+
+.wy-side-nav-search {
+    background-color: #afca0b;
+}
+
+.wy-side-nav-search input[type=text] {
+    border-color: #96a825;
+}
+
+.wy-nav-side {
+    background: #F8F8F8;
+    border-right: 1px solid #e7e7e7;
+}
+
+.wy-menu-vertical a {
+    color: #687707;
+}
+
+.wy-menu-vertical a:hover {
+    background-color: #eeeeee;
+}
+
+.wy-menu-vertical a:active {
+    background-color: #eeeeee;
+    color: #687707;
+}
+
+.wy-breadcrumbs li a {
+    padding-bottom: 0;
+}
+
+.wy-menu-vertical p.caption {
+    display: none;
+}
+
+.wy-menu-vertical li.current > a {
+    color: #404040;
+    font-weight: bold;
+    background: #e8e8e8;
+    border: none;
+}
+
+.wy-menu-vertical li.toctree-l1.current>a {
+    border: none;
+}
+
+a, a:visited {
+    color: #687707;
+}
+
+a:hover, a:focus {
+    color: #afca0b;
+}
+
+.rst-content a {
+    color: #8ea20c;
+    border-bottom: 1px solid rgba(72,90,19,0.15);
+}
+
+.rst-content a:hover,
+.rst-content a:focus {
+    border-bottom: 1px solid rgba(72,90,19,0.50);
+}
+
+
+h1, h2, .rst-content .toctree-wrapper p.caption, h3, h4, h5, h6, legend {
+    font-weight: 700;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+footer {
+    font-size: 80%;
+}
+
+.boxes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+}
+
+.sectionbox {
+    width: 40%;
+    flex-grow: 1;
+    height: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    color: black;
+    margin: 5px;
+    margin-right: 15px;
+    font-weight: normal;
+    align-items: start;
+}
+
+.rst-content .sectionbox,
+.rst-content .sectionbox:hover {
+    border-bottom: 0;
+}
+
+.sectionbox .fa {
+    font-size: 40px;
+    color: #afca0b;
+    margin-right: 8px;
+    min-width: 48px;
+}
+
+.sectionbox .content {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    margin-top: 10px;
+}
+
+.sectionbox .heading {
+    color: #afca0b;
+    font-size: 20px;
+}
+
+.sectionbox .text p {
+    color: black;
+    margin: 4px 0;
+}
+
+@media screen and (max-width: 480px) {
+    .sectionbox {
+        width: 100%;
+    }
+}
+
+svg.fa-w-16 {
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
+}

@@ -1,0 +1,727 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Manual deployment &mdash; OpenBike  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Configuration" href="../configuration.html" />
+    <link rel="prev" title="Requirements" href="../requirements.html" />
+ 
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="OpenBike documentation" />
+<meta property="og:image" content="../../_static/images/openbike-og.png" />
+<meta name="twitter:card" content="summary" />
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/openbike-white.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Administrator documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../requirements.html">Requirements</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Manual deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unix-user">Unix user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#database">Database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#package-dependencies">Package dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-cykel-from-source">Install cykel from source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-cykel">Configure cykel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prepare-cykel-for-first-run">Prepare cykel for first run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#start-cykel-as-a-service">Start cykel as a service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-cykel-worker-as-a-service">Run cykel worker as a service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-voorwiel-source">Get voorwiel source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-voorwiel">Configure voorwiel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deploy-voorwiel">Deploy voorwiel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-skoetsel-source">Get skoetsel source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-and-deploy-skoetsel">Configure and deploy skoetsel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reverse-proxy-nginx">Reverse Proxy (nginx)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reverse-proxy-apache2">Reverse Proxy (apache2)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#next-steps">Next steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration.html">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration.html#initial-admin-access">Initial Admin Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration.html#site">Site</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration.html#authentication-providers">Authentication Providers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration.html#twitter">Twitter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration.html#github">GitHub</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration.html#autoenrollment-providers">AUTOENROLLMENT_PROVIDERS</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration.html#bike-share-preferences">Bike Share Preferences</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration.html#station-matching">Station matching</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration.html#automatic-hiding">Automatic hiding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration.html#gbfs">GBFS</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration.html#additional-administrators">Additional Administrators</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../customization.html">Customization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../customization.html#title-name">Title &amp; Name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../customization.html#default-map-location">Default Map Location</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../customization.html#logo">Logo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../customization.html#about-message">About message</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../maintenance.html">Maintenance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../maintenance.html#updates">Updates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../maintenance.html#cykel">cykel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../maintenance.html#voorwiel">voorwiel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../maintenance.html#skoetsel">skoetsel</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tracker/manual.html">Manual tracker adapter deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tracker/manual.html#cykel-ttn">cykel-ttn</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tracker/manual.html#decoder">Decoder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tracker/manual.html#install-from-source">Install from source</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tracker/manual.html#configuration">Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tracker/manual.html#start-cykel-ttn-as-a-service">Start cykel-ttn as a service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tracker/manual.html#run-multiple-instances">Run multiple instances</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../monitoring.html">Monitoring</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../monitoring.html#setup">Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../monitoring.html#displaying">Displaying</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../monitoring.html#alerting">Alerting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../operator/index.html">Operator documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../operator/bikes.html">Bikes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../operator/bikes.html#requirements-for-shared-bikes">Requirements for shared bikes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../operator/bikes.html#identification">Identification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../operator/bikes.html#branding">Branding</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../operator/brand.html">Brand guidelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../operator/brand.html#logo">Logo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../operator/brand.html#source">Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../operator/brand.html#fonts">Fonts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../operator/brand.html#colors">Colors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../operator/trackers.html">Trackers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../operator/trackers.html#general-information">General Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../operator/trackers.html#tracker-types">Tracker Types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../operator/trackers.html#location-detection">Location detection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../operator/trackers.html#data-transmission">Data transmission</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/index.html">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../user/index.html#step-1-register">Step 1: Register</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user/index.html#step-2-find-a-bike">Step 2: Find a bike</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user/index.html#step-3-rent-a-bike">Step 3: Rent a bike</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user/index.html#step-4-return-a-bike">Step 4: Return a bike</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user/index.html#support">Support</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer documentation</a><ul class="simple">
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">OpenBike</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+  <li><a href="../../index.html">Docs</a> &raquo;</li>
+    
+      <li><a href="../index.html">Administrator documentation</a> &raquo;</li>
+    
+  <li>Manual deployment</li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/stadtulm/openbike/blob/master/docs/administrator/installation/manual.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="manual-deployment">
+<span id="installation-manual"></span><h1>Manual deployment<a class="headerlink" href="#manual-deployment" title="Permalink to this headline">¶</a></h1>
+<p>This guide describes the installation of a installation of OpenBike with its components from source. In this setup, everything is being run on one host.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Even though we try to make it straightforward to run OpenBike, it still requires some Linux experience to get it right.</p>
+</div>
+<p>We wrote this guide based on our setup on the Linux distribution Ubuntu 18.04 but it should work very similar on other modern distributions, especially on all systemd-based ones.</p>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>Please set up the following systems beforehand, we’ll not explain them here in detail (but see these links for external installation guides):</p>
+<ul class="simple">
+<li><p>A HTTP reverse proxy, e.g. <a class="reference external" href="https://botleg.com/stories/https-with-lets-encrypt-and-nginx/">nginx</a>, Apache or Caddy to allow HTTPS connections</p></li>
+<li><p>A <a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-20-04">PostgreSQL</a> 9.5+ database server with <a class="reference external" href="https://postgis.net">PostGIS</a></p></li>
+<li><p><a class="reference external" href="https://redis.io">Redis</a>, as a message broker for the asynchronous workers</p></li>
+</ul>
+<p>We also recommend that you use a firewall, although this is not a OpenBike-specific recommendation. If you’re new to Linux and firewalls, we recommend that you start with <a class="reference external" href="https://en.wikipedia.org/wiki/Uncomplicated_Firewall">ufw</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please, do not run OpenBike without HTTPS encryption. You’ll handle user accounts and thanks to <a class="reference external" href="https://letsencrypt.org">Let’s Encrypt</a>
+SSL certificates can be obtained for free these days. We also <em>do not</em> provide support for HTTP-only
+installations except for development purposes.</p>
+</div>
+</section>
+<section id="unix-user">
+<h2>Unix user<a class="headerlink" href="#unix-user" title="Permalink to this headline">¶</a></h2>
+<p>As we do not want to run the different OpenBike services as root, we first create a new unprivileged user:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># adduser openbike  --system --disabled-password --shell /bin/bash --home /srv/openbike</span>
+</pre></div>
+</div>
+<p>In this guide, all code lines prepended with a <code class="docutils literal notranslate"><span class="pre">#</span></code> symbol are commands that you need to execute on your server as
+<code class="docutils literal notranslate"><span class="pre">root</span></code> user (e.g. using <code class="docutils literal notranslate"><span class="pre">sudo</span></code>); all lines prepended with a <code class="docutils literal notranslate"><span class="pre">$</span></code> symbol should be run by the unprivileged user.</p>
+</section>
+<section id="database">
+<h2>Database<a class="headerlink" href="#database" title="Permalink to this headline">¶</a></h2>
+<p>Having the database server installed, we still need a database and a database user. We can create these with any kind
+of database managing tool or directly on our database’s shell. For PostgreSQL, we would do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># sudo -u postgres createuser openbike</span>
+<span class="c1"># sudo -u postgres createdb -O openbike openbike</span>
+</pre></div>
+</div>
+<p>Additionally, GIS extensions must be enabled. For PostgreSQL with PostGIS, use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># sudo -u postgres psql -d openbike -c &quot;CREATE EXTENSION postgis;&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="package-dependencies">
+<h2>Package dependencies<a class="headerlink" href="#package-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>To build and run cykel, you will need the following packages:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># apt install git build-essential python3 python3-dev python3-venv python3-pip libpq-dev libgdal-dev</span>
+</pre></div>
+</div>
+<p>For nodejs, we recommend using the nodesource PPA to get the latest LTS version. Look into <a class="reference external" href="https://github.com/nodesource/distributions#deb">https://github.com/nodesource/distributions#deb</a> for instructions to add the repository. A short, slightly dangerous way is here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -</span>
+<span class="c1"># apt install -y nodejs</span>
+</pre></div>
+</div>
+</section>
+<section id="install-cykel-from-source">
+<h2>Install cykel from source<a class="headerlink" href="#install-cykel-from-source" title="Permalink to this headline">¶</a></h2>
+<p>Now we will install cykel. The following steps are to be executed as the <code class="docutils literal notranslate"><span class="pre">openbike</span></code> user. Before we
+actually install cykel, we will create a virtual environment to isolate the python packages from your global
+python installation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -m venv /srv/openbike/venv
+$ source /srv/openbike/venv/bin/activate
+(venv)$ pip3 install -U pip wheel
+</pre></div>
+</div>
+<p>We now clone the cykel source and install the dependencies:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(venv)$ git clone https://github.com/stadtulm/cykel.git /srv/openbike/cykel
+(venv)$ cd /srv/openbike/cykel
+(venv)$ pip3 install -U -r requirements.txt
+(venv)$ pip3 install -U gunicorn
+</pre></div>
+</div>
+</section>
+<section id="configure-cykel">
+<h2>Configure cykel<a class="headerlink" href="#configure-cykel" title="Permalink to this headline">¶</a></h2>
+<p>For configuration normally <code class="docutils literal notranslate"><span class="pre">settings.py</span></code> is used. cykel also uses this file, but many important settings are set by environment variables. These can reside in your environment, or in an <code class="docutils literal notranslate"><span class="pre">.env</span></code> file in the <code class="docutils literal notranslate"><span class="pre">cykel/</span></code> directory (next to the <code class="docutils literal notranslate"><span class="pre">settings.py</span></code> file), that gets automatically loaded.</p>
+<p>The following is the baseline of environment variables you have to set:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SECRET_KEY</span><span class="o">=</span><span class="n">a1b2c3d4e5f6examplechangeit7g8h9</span>
+<span class="n">DEBUG</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">DATABASE_URL</span><span class="o">=</span><span class="n">postgis</span><span class="p">:</span><span class="o">///</span><span class="n">openbike</span>
+<span class="n">REDIS_URL</span><span class="o">=</span><span class="n">redis</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">6379</span><span class="o">/</span><span class="mi">0</span>
+<span class="n">ALLOWED_HOSTS</span><span class="o">=</span><span class="n">api</span><span class="o">.</span><span class="n">dev</span><span class="o">.</span><span class="n">bike</span>
+<span class="n">UI_SITE_URL</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">dev</span><span class="o">.</span><span class="n">bike</span>
+<span class="n">CORS_ORIGIN_WHITELIST</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">dev</span><span class="o">.</span><span class="n">bike</span>
+<span class="n">USE_X_FORWARDED_PROTO</span><span class="o">=</span><span class="n">true</span>
+</pre></div>
+</div>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">SECRET_KEY</span></code></dt><dd><p>The <a class="reference external" href="https://docs.djangoproject.com/en/2.2/ref/settings/#std:setting-SECRET_KEY">Secret Key is a django feature</a>, used for  cryptographic signing for sessions, messages, and more. Generate a nice long random string for this key. (You could use <code class="docutils literal notranslate"><span class="pre">openssl</span> <span class="pre">rand</span> <span class="pre">-hex</span> <span class="pre">32</span></code> for that)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">DEBUG</span></code></dt><dd><p>Set to 1 to enable <a class="reference external" href="https://docs.djangoproject.com/en/2.2/ref/settings/#std:setting-DEBUG">DEBUG</a> output, or 0 to disable. This should be really only used for development and troubleshooting.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Never deploy a site into production with DEBUG turned on.</p>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">DATABASE_URL</span></code></dt><dd><p>Here you have configure the access to your database in a format supported by <a class="reference external" href="https://github.com/jacobian/dj-database-url">dj-database-url</a>. If your PostgreSQL with PostGIS is residing on the same host, try <code class="docutils literal notranslate"><span class="pre">postgis:///openbike</span></code> For user/password auth on another host, use <code class="docutils literal notranslate"><span class="pre">postgis://username:password&#64;host/database</span></code></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">REDIS_URL</span></code></dt><dd><p>The URL which contains the host and port where your redis-server is running at. The used format is <code class="docutils literal notranslate"><span class="pre">redis://[:password&#64;]host[:port][/db-number]</span></code>, if redis is running on the same host, try <code class="docutils literal notranslate"><span class="pre">redis://localhost:6379/0</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ALLOWED_HOSTS</span></code></dt><dd><p>Comma seperated list of hostnames, where cykel is reachable at.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">UI_SITE_URL</span></code></dt><dd><p>The full URL to your deployment of voorwiel. This is used to redirect the user after the login. Do not use a trailing slash here!</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">CORS_ORIGIN_WHITELIST</span></code></dt><dd><p>CORS origins to allow, i.e. the frontend URL (with scheme, without path)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">USE_X_FORWARDED_PROTO</span></code></dt><dd><p>If you’re serving cykel behind a reverse proxy (like in this manual), set this to <code class="docutils literal notranslate"><span class="pre">true</span></code>, so the <code class="docutils literal notranslate"><span class="pre">X-Forwarded-Proto</span></code> header gets interpreted and URLs are built correctly with https.</p>
+</dd>
+</dl>
+</section>
+<section id="prepare-cykel-for-first-run">
+<h2>Prepare cykel for first run<a class="headerlink" href="#prepare-cykel-for-first-run" title="Permalink to this headline">¶</a></h2>
+<p>After the configuration we can finally compile static files and create the database structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(venv)$ python3 manage.py migrate
+(venv)$ python3 manage.py collectstatic
+</pre></div>
+</div>
+</section>
+<section id="start-cykel-as-a-service">
+<h2>Start cykel as a service<a class="headerlink" href="#start-cykel-as-a-service" title="Permalink to this headline">¶</a></h2>
+<p>We recommend starting cykel using systemd to make sure it runs correctly after a reboot. Create a file
+named <code class="docutils literal notranslate"><span class="pre">/etc/systemd/system/cykel.service</span></code> with the following content:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[Unit]
+Description=gunicorn daemon for cykel
+After=network.target
+
+[Service]
+User=openbike
+Group=nogroup
+PIDFile=/run/openbike/cykel.pid
+WorkingDirectory=/srv/openbike/cykel
+ExecStart=/srv/openbike/venv/bin/gunicorn cykel.wsgi \
+                --name cykel \
+                --pid /run/openbike/cykel.pid \
+                --bind 127.0.0.1:8000 --access-logfile -
+ExecReload=/bin/kill -s HUP $MAINPID
+KillSignal=SIGTERM
+PrivateTmp=true
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+</pre></div>
+</div>
+<p>This runs an gunicorn application server on localhost on port <code class="docutils literal notranslate"><span class="pre">8000</span></code>. Requests are made to this port by our reverse proxy, which gets configured below.</p>
+<p>The referenced <code class="docutils literal notranslate"><span class="pre">/run/openbike/cykel.pid</span></code> pid file resides in a directory that does not exist yet. For these temporary directories, systemd brought us the tmpfiles mechanism.
+To create this directory, we create the file <code class="docutils literal notranslate"><span class="pre">/etc/tmpfiles.d/openbike.conf</span></code> with the following contents:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Directory for openbike pid files</span>
+<span class="n">d</span> <span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">openbike</span> <span class="mi">0755</span> <span class="n">openbike</span> <span class="n">nogroup</span> <span class="o">-</span> <span class="o">-</span>
+</pre></div>
+</div>
+<p>To create the directory right now (without waiting for your next reboot) run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># systemd-tmpfiles --create openbike.conf</span>
+</pre></div>
+</div>
+<p>You can now run the following commands to enable and start the service:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># systemctl daemon-reload</span>
+<span class="c1"># systemctl enable cykel</span>
+<span class="c1"># systemctl start cykel</span>
+</pre></div>
+</div>
+</section>
+<section id="run-cykel-worker-as-a-service">
+<h2>Run cykel worker as a service<a class="headerlink" href="#run-cykel-worker-as-a-service" title="Permalink to this headline">¶</a></h2>
+<p>Some tasks cykel is doing are best run in the background. For this, we’re using <a class="reference external" href="https://docs.celeryproject.org">celery</a>, which provides us seperate processes to run these tasks without impacting the api and administration interfaces.</p>
+<p>To keep a worker running in the background, create a file named <code class="docutils literal notranslate"><span class="pre">/etc/systemd/system/cykel-worker.service</span></code> with the following content:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Unit</span><span class="p">]</span>
+<span class="n">Description</span><span class="o">=</span><span class="n">cykel</span> <span class="n">background</span> <span class="n">worker</span>
+<span class="n">After</span><span class="o">=</span><span class="n">network</span><span class="o">.</span><span class="n">target</span> <span class="n">redis</span><span class="o">-</span><span class="n">server</span><span class="o">.</span><span class="n">service</span>
+
+<span class="p">[</span><span class="n">Service</span><span class="p">]</span>
+<span class="n">User</span><span class="o">=</span><span class="n">openbike</span>
+<span class="n">Group</span><span class="o">=</span><span class="n">nogroup</span>
+<span class="n">WorkingDirectory</span><span class="o">=/</span><span class="n">srv</span><span class="o">/</span><span class="n">openbike</span><span class="o">/</span><span class="n">cykel</span>
+<span class="n">ExecStart</span><span class="o">=/</span><span class="n">srv</span><span class="o">/</span><span class="n">openbike</span><span class="o">/</span><span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">celery</span> <span class="o">-</span><span class="n">A</span> <span class="n">cykel</span> <span class="n">worker</span> <span class="o">-</span><span class="n">l</span> <span class="n">INFO</span> <span class="o">-</span><span class="n">B</span>
+<span class="n">Restart</span><span class="o">=</span><span class="n">on</span><span class="o">-</span><span class="n">failure</span>
+
+<span class="p">[</span><span class="n">Install</span><span class="p">]</span>
+<span class="n">WantedBy</span><span class="o">=</span><span class="n">multi</span><span class="o">-</span><span class="n">user</span><span class="o">.</span><span class="n">target</span>
+</pre></div>
+</div>
+<p>You can now again run the following commands to enable and start the background service:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># systemctl daemon-reload</span>
+<span class="c1"># systemctl enable cykel-worker</span>
+<span class="c1"># systemctl start cykel-worker</span>
+</pre></div>
+</div>
+</section>
+<section id="get-voorwiel-source">
+<h2>Get voorwiel source<a class="headerlink" href="#get-voorwiel-source" title="Permalink to this headline">¶</a></h2>
+<p>To let people rent the bikes, you need a visual interface. voorwiel is the default UI for cykel. The following steps are again executed as the <code class="docutils literal notranslate"><span class="pre">openbike</span></code> user:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/stadtulm/voorwiel.git /srv/openbike/voorwiel
+$ cd /srv/openbike/voorwiel
+$ npm ci
+</pre></div>
+</div>
+</section>
+<section id="configure-voorwiel">
+<span id="id1"></span><h2>Configure voorwiel<a class="headerlink" href="#configure-voorwiel" title="Permalink to this headline">¶</a></h2>
+<p>The configuration of voorwiel currently still happens before the build process. The configuration happens in the <code class="docutils literal notranslate"><span class="pre">config/config.production.js</span></code> file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">ENV</span> <span class="o">=</span> <span class="s2">&quot;production&quot;</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">TITLE</span> <span class="o">=</span> <span class="s2">&quot;dev.bike - open bikesharing for everyone&quot;</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;dev.bike&quot;</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">SYSTEM_URL</span> <span class="o">=</span> <span class="s2">&quot;https://api.dev.bike&quot;</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">API_ROOT</span> <span class="o">=</span> <span class="n">SYSTEM_URL</span> <span class="o">+</span> <span class="s2">&quot;/api&quot;</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">GBFS_URL</span> <span class="o">=</span> <span class="n">SYSTEM_URL</span> <span class="o">+</span> <span class="s2">&quot;/gbfs/gbfs.json&quot;</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">DEFAULT_LOCATION</span> <span class="o">=</span> <span class="p">[</span><span class="mf">48.3984</span><span class="p">,</span> <span class="mf">9.9908</span><span class="p">];</span>
+<span class="n">var</span> <span class="n">DEFAULT_ZOOM</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">I18N_MESSAGE_OVERRIDE</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="n">var</span> <span class="n">SUPPORT_TYPE</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">SUPPORT_URL</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">SENTRY_DSN</span><span class="p">;</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">TITLE</span></code></dt><dd><p>Title of the voorwiel application page</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">NAME</span></code></dt><dd><p>Name of your bikesharing system</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">SYSTEM_URL</span></code></dt><dd><p>The URL to your cykel instance</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">DEFAULT_LOCATION</span></code></dt><dd><p>Latitude and Longitude for the center of the map</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">DEFAULT_ZOOM</span></code></dt><dd><p>Zoom level for the default view of the map</p>
+</dd>
+</dl>
+</section>
+<section id="deploy-voorwiel">
+<span id="id2"></span><h2>Deploy voorwiel<a class="headerlink" href="#deploy-voorwiel" title="Permalink to this headline">¶</a></h2>
+<p>voorwiel and its configuration is built into a big bundle of javascript. Run the following command to build voorwiel and drop the result into the <code class="docutils literal notranslate"><span class="pre">dist</span></code> folder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ NODE_ENV=production NPM_CONFIG_PRODUCTION=true npm run build
+</pre></div>
+</div>
+</section>
+<section id="get-skoetsel-source">
+<h2>Get skoetsel source<a class="headerlink" href="#get-skoetsel-source" title="Permalink to this headline">¶</a></h2>
+<p>To help yourself operating the sharing, having an easier look at the bikes for maintenance etc, skoetsel is the UI for operators and maintenance staff. The following steps are again executed as the <code class="docutils literal notranslate"><span class="pre">openbike</span></code> user:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/stadtulm/skoetsel.git /srv/openbike/skoetsel
+$ cd /srv/openbike/skoetsel
+$ npm ci
+</pre></div>
+</div>
+</section>
+<section id="configure-and-deploy-skoetsel">
+<h2>Configure and deploy skoetsel<a class="headerlink" href="#configure-and-deploy-skoetsel" title="Permalink to this headline">¶</a></h2>
+<p>skoetsel is currently in a very beta state of development. The only configuration change you have to do, is to set the URL to the api.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export API_URL=https://api.dev.bike
+$ npm run generate
+</pre></div>
+</div>
+</section>
+<section id="reverse-proxy-nginx">
+<h2>Reverse Proxy (nginx)<a class="headerlink" href="#reverse-proxy-nginx" title="Permalink to this headline">¶</a></h2>
+<p>The following snippet is an example on how to configure a nginx proxy for cykel, skoetsel and voorwiel:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>server {
+    server_name api.dev.bike;
+    client_max_body_size 50M;
+
+    location /static/ {
+        alias /srv/openbike/cykel/public/;
+        try_files $uri $uri/ =404;
+    }
+
+    location / {
+        try_files $uri $uri/ @cykel;
+    }
+
+    location @cykel {
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_read_timeout 300;
+        proxy_pass http://127.0.0.1:8000;
+    }
+
+    listen [::]:443 ssl; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/api.dev.bike/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/api.dev.bike/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+server {
+    server_name care.dev.bike;
+
+    root /srv/openbike/skoetsel/dist;
+    index index.html index.htm;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    listen [::]:443 ssl; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/care.dev.bike/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/care.dev.bike/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+server {
+    server_name dev.bike;
+
+    root /srv/openbike/voorwiel/dist;
+    index index.html index.htm;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    listen [::]:443 ssl; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/dev.bike/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/dev.bike/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+</pre></div>
+</div>
+<p>We recommend reading about setting <a class="reference external" href="https://mozilla.github.io/server-side-tls/ssl-config-generator/">strong encryption settings</a> for your web server. Certbot provides these with the <code class="docutils literal notranslate"><span class="pre">options-ssl-nginx.conf</span></code> file.</p>
+</section>
+<section id="reverse-proxy-apache2">
+<h2>Reverse Proxy (apache2)<a class="headerlink" href="#reverse-proxy-apache2" title="Permalink to this headline">¶</a></h2>
+<p>If you’re using apache2 instead, the following snippet is an example on how to configure the reverse proxy for cykel, skoetsel and voorwiel in the apache2 format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;VirtualHost *:443&gt;
+  ServerName api.dev.bike
+
+  SSLCertificateFile /etc/letsencrypt/live/api.dev.bike/cert.pem
+  SSLCertificateKeyFile /etc/letsencrypt/live/api.dev.bike/privkey.pem
+  Include /etc/letsencrypt/options-ssl-apache.conf
+
+  Alias /static /srv/openbike/cykel/public
+  &lt;Directory /srv/openbike/cykel/public&gt;
+    Require all granted
+  &lt;/Directory&gt;
+
+  ProxyPreserveHost On
+  RequestHeader set X-Forwarded-Proto &#39;https&#39;
+  ProxyPass /static !
+  ProxyPass / http://127.0.0.1:8000/
+  ProxyPassReverse / http://127.0.0.1:8000/
+&lt;/VirtualHost&gt;
+&lt;VirtualHost *:443&gt;
+  ServerName care.dev.bike
+
+  SSLCertificateFile /etc/letsencrypt/live/care.dev.bike/cert.pem
+  SSLCertificateKeyFile /etc/letsencrypt/live/care.dev.bike/privkey.pem
+  Include /etc/letsencrypt/options-ssl-apache.conf
+
+  DocumentRoot /srv/openbike/skoetsel/dist
+  &lt;Directory /srv/openbike/skoetsel/dist&gt;
+    Require all granted
+  &lt;/Directory&gt;
+
+  FallbackResource /index.html
+&lt;/VirtualHost&gt;
+&lt;VirtualHost *:443&gt;
+  ServerName dev.bike
+
+  SSLCertificateFile /etc/letsencrypt/live/dev.bike/cert.pem
+  SSLCertificateKeyFile /etc/letsencrypt/live/dev.bike/privkey.pem
+  Include /etc/letsencrypt/options-ssl-apache.conf
+
+  DocumentRoot /srv/openbike/voorwiel/dist
+  &lt;Directory /srv/openbike/voorwiel/dist&gt;
+    Require all granted
+  &lt;/Directory&gt;
+
+  FallbackResource /index.html
+&lt;/VirtualHost&gt;
+</pre></div>
+</div>
+<p>Do not forget to enable the <em>proxy</em>, <em>proxy_http</em> and the <em>headers</em> module.</p>
+<p>We recommend reading about setting <a class="reference external" href="https://mozilla.github.io/server-side-tls/ssl-config-generator/">strong encryption settings</a> for your web server. Certbot provides these with the <code class="docutils literal notranslate"><span class="pre">options-ssl-apache.conf</span></code> file.</p>
+</section>
+<section id="next-steps">
+<h2>Next steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+<p>Yay! You’ve installed cykel and voorwiel. To configure your new running bikesharing system and get access to the administration interface, read the <a class="reference internal" href="../configuration.html#configuration"><span class="std std-ref">Configuration</span></a> chapter.</p>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../configuration.html" class="btn btn-neutral float-right" title="Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../requirements.html" class="btn btn-neutral float-left" title="Requirements" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  <div class="cc0">
+    <a href="https://creativecommons.org/publicdomain/zero/1.0/">
+      <svg aria-hidden="true" focusable="false" class="svg-inline--fa fa-creative-commons fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M245.83 214.87l-33.22 17.28c-9.43-19.58-25.24-19.93-27.46-19.93-22.13 0-33.22 14.61-33.22 43.84 0 23.57 9.21 43.84 33.22 43.84 14.47 0 24.65-7.09 30.57-21.26l30.55 15.5c-6.17 11.51-25.69 38.98-65.1 38.98-22.6 0-73.96-10.32-73.96-77.05 0-58.69 43-77.06 72.63-77.06 30.72-.01 52.7 11.95 65.99 35.86zm143.05 0l-32.78 17.28c-9.5-19.77-25.72-19.93-27.9-19.93-22.14 0-33.22 14.61-33.22 43.84 0 23.55 9.23 43.84 33.22 43.84 14.45 0 24.65-7.09 30.54-21.26l31 15.5c-2.1 3.75-21.39 38.98-65.09 38.98-22.69 0-73.96-9.87-73.96-77.05 0-58.67 42.97-77.06 72.63-77.06 30.71-.01 52.58 11.95 65.56 35.86zM247.56 8.05C104.74 8.05 0 123.11 0 256.05c0 138.49 113.6 248 247.56 248 129.93 0 248.44-100.87 248.44-248 0-137.87-106.62-248-248.44-248zm.87 450.81c-112.54 0-203.7-93.04-203.7-202.81 0-105.42 85.43-203.27 203.72-203.27 112.53 0 202.82 89.46 202.82 203.26-.01 121.69-99.68 202.82-202.84 202.82z"></path></svg>
+      <svg aria-hidden="true" focusable="false" class="svg-inline--fa fa-creative-commons-zero fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M247.6 8C389.4 8 496 118.1 496 256c0 147.1-118.5 248-248.4 248C113.6 504 0 394.5 0 256 0 123.1 104.7 8 247.6 8zm.8 44.7C130.2 52.7 44.7 150.6 44.7 256c0 109.8 91.2 202.8 203.7 202.8 103.2 0 202.8-81.1 202.8-202.8.1-113.8-90.2-203.3-202.8-203.3zm-.4 60.5c-81.9 0-102.5 77.3-102.5 142.8 0 65.5 20.6 142.8 102.5 142.8S350.5 321.5 350.5 256c0-65.5-20.6-142.8-102.5-142.8zm0 53.9c3.3 0 6.4.5 9.2 1.2 5.9 5.1 8.8 12.1 3.1 21.9l-54.5 100.2c-1.7-12.7-1.9-25.1-1.9-34.4 0-28.8 2-88.9 44.1-88.9zm40.8 46.2c2.9 15.4 3.3 31.4 3.3 42.7 0 28.9-2 88.9-44.1 88.9-13.5 0-32.6-7.7-20.1-26.4l60.9-105.2z"></path></svg>
+    </a>
+    To the extent possible under law, the creators of this documentation
+    have waived all copyrights and related or neighbouring rights
+    to this work through the
+    <a href="https://creativecommons.org/publicdomain/zero/1.0/">
+      Creative Commons Zero Universal (CC0 1.0) Public Domain Dedication.
+    </a>
+  </div>
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

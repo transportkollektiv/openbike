@@ -1,0 +1,418 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Configuration &mdash; OpenBike  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Customization" href="customization.html" />
+    <link rel="prev" title="Manual deployment" href="installation/manual.html" />
+ 
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="OpenBike documentation" />
+<meta property="og:image" content="../_static/images/openbike-og.png" />
+<meta name="twitter:card" content="summary" />
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/openbike-white.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Administrator documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="requirements.html">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation/manual.html">Manual deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#unix-user">Unix user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#database">Database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#package-dependencies">Package dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#install-cykel-from-source">Install cykel from source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#configure-cykel">Configure cykel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#prepare-cykel-for-first-run">Prepare cykel for first run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#start-cykel-as-a-service">Start cykel as a service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#run-cykel-worker-as-a-service">Run cykel worker as a service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#get-voorwiel-source">Get voorwiel source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#configure-voorwiel">Configure voorwiel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#deploy-voorwiel">Deploy voorwiel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#get-skoetsel-source">Get skoetsel source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#configure-and-deploy-skoetsel">Configure and deploy skoetsel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#reverse-proxy-nginx">Reverse Proxy (nginx)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#reverse-proxy-apache2">Reverse Proxy (apache2)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#next-steps">Next steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#initial-admin-access">Initial Admin Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#site">Site</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#authentication-providers">Authentication Providers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#twitter">Twitter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#github">GitHub</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autoenrollment-providers">AUTOENROLLMENT_PROVIDERS</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#bike-share-preferences">Bike Share Preferences</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#station-matching">Station matching</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#automatic-hiding">Automatic hiding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gbfs">GBFS</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#additional-administrators">Additional Administrators</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="customization.html">Customization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="customization.html#title-name">Title &amp; Name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="customization.html#default-map-location">Default Map Location</a></li>
+<li class="toctree-l3"><a class="reference internal" href="customization.html#logo">Logo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="customization.html#about-message">About message</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="maintenance.html">Maintenance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maintenance.html#updates">Updates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="maintenance.html#cykel">cykel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="maintenance.html#voorwiel">voorwiel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="maintenance.html#skoetsel">skoetsel</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tracker/manual.html">Manual tracker adapter deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tracker/manual.html#cykel-ttn">cykel-ttn</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tracker/manual.html#decoder">Decoder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tracker/manual.html#install-from-source">Install from source</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tracker/manual.html#configuration">Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tracker/manual.html#start-cykel-ttn-as-a-service">Start cykel-ttn as a service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tracker/manual.html#run-multiple-instances">Run multiple instances</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="monitoring.html">Monitoring</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="monitoring.html#setup">Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="monitoring.html#displaying">Displaying</a></li>
+<li class="toctree-l4"><a class="reference internal" href="monitoring.html#alerting">Alerting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../operator/index.html">Operator documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../operator/bikes.html">Bikes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../operator/bikes.html#requirements-for-shared-bikes">Requirements for shared bikes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../operator/bikes.html#identification">Identification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../operator/bikes.html#branding">Branding</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../operator/brand.html">Brand guidelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../operator/brand.html#logo">Logo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../operator/brand.html#source">Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../operator/brand.html#fonts">Fonts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../operator/brand.html#colors">Colors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../operator/trackers.html">Trackers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../operator/trackers.html#general-information">General Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../operator/trackers.html#tracker-types">Tracker Types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../operator/trackers.html#location-detection">Location detection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../operator/trackers.html#data-transmission">Data transmission</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user/index.html#step-1-register">Step 1: Register</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/index.html#step-2-find-a-bike">Step 2: Find a bike</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/index.html#step-3-rent-a-bike">Step 3: Rent a bike</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/index.html#step-4-return-a-bike">Step 4: Return a bike</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/index.html#support">Support</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer documentation</a><ul class="simple">
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenBike</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+  <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+      <li><a href="index.html">Administrator documentation</a> &raquo;</li>
+    
+  <li>Configuration</li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/stadtulm/openbike/blob/master/docs/administrator/configuration.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="configuration">
+<span id="id1"></span><h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<p>cykel is mostly configured graphically with the django-admin based administration interface. This is reachable at <code class="docutils literal notranslate"><span class="pre">https://&lt;host&gt;/admin</span></code>.</p>
+<p>Things that can’t be configured graphically in the admin are provided as environment variables. This is for example needed to provide the Database Credentials or the Hostnames where cykel is reachable at.</p>
+<p>Only in some edge cases you may have to directly modify the <code class="docutils literal notranslate"><span class="pre">cykel/settings.py</span></code>.</p>
+<section id="initial-admin-access">
+<h2>Initial Admin Access<a class="headerlink" href="#initial-admin-access" title="Permalink to this headline">¶</a></h2>
+<p>For your first user with administrative rights, use djangos default way to <a class="reference external" href="https://docs.djangoproject.com/en/2.2/ref/django-admin/#createsuperuser">create a superuser</a>. Don’t forget to run this as <code class="docutils literal notranslate"><span class="pre">openbike</span></code> and apply the venv:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ source /srv/openbike/venv/bin/activate
+(venv)$ python3 manage.py createsuperuser
+</pre></div>
+</div>
+</section>
+<section id="site">
+<h2>Site<a class="headerlink" href="#site" title="Permalink to this headline">¶</a></h2>
+<p>Cykel needs to know how to refer to itself. This is used in login redirects, so we have to make sure this value is correct. The configuration happens within djangos default <em>Site</em> model, so you have to configure it in the Sites section in the administration. This already contains an <code class="docutils literal notranslate"><span class="pre">example.com</span></code> site right after the installation - just edit this first entry.</p>
+<p>For the configuration: The <strong>domain name</strong> must equal the cykel installation domain name, the <strong>display name</strong> should be the name where your voorwiel UI is reachable at.</p>
+</section>
+<section id="authentication-providers">
+<h2>Authentication Providers<a class="headerlink" href="#authentication-providers" title="Permalink to this headline">¶</a></h2>
+<p>cykel is using <strong>django-allauth</strong> for integrating third-party login, <a class="reference external" href="https://django-allauth.readthedocs.io/en/latest/providers.html">their documentation provides a list of providers they support</a>. For most of the providers, it is enough to add them to <code class="docutils literal notranslate"><span class="pre">INSTALLED_APPS</span></code> in <code class="docutils literal notranslate"><span class="pre">cykel/settings.py</span></code>. By default, Twitter, GitHub, Stackexchange, Slack and FragDenStaat as well as Eventphone are available and already installed.</p>
+<p>For configuring an Authentication Provider look into <cite>Social Applications</cite>. When you add a provider there, put the providers name in lowercase into the name field - this is used in the callback url. You also need to provide the OAuth2 client id and the client secret. Some providers call this differently, for these we’ve added instructions below.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <strong>Callback URL</strong> you are asked by the provider to put on their allow list is <code class="docutils literal notranslate"><span class="pre">https://&lt;cykel</span> <span class="pre">host&gt;/auth/&lt;name&gt;/login/callback/</span></code></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> is the name of your created social application in the cykel admin, this is why you should use short and lowercase provider names there.</p>
+</div>
+</div></blockquote>
+<section id="twitter">
+<h3>Twitter<a class="headerlink" href="#twitter" title="Permalink to this headline">¶</a></h3>
+<p>For twitter, you have to <a class="reference external" href="https://developer.twitter.com/en/apply-for-access">apply for developer account access</a>.
+If you have developer access, create an app – read-only permissions are enough, we’re only going to use it for authentication.</p>
+<p>Our needed Credentials can be found on the <cite>Keys and tokens Page</cite> as <cite>Consumer API keys</cite>, the client id is the <cite>api key</cite>, the client secret is the <cite>api secret key</cite>.</p>
+</section>
+<section id="github">
+<h3>GitHub<a class="headerlink" href="#github" title="Permalink to this headline">¶</a></h3>
+<p>If you want to use GitHub as an Authentication Provider, create a new OAuth App at <a class="reference external" href="https://github.com/settings/developers">https://github.com/settings/developers</a>. You can also create this directly in the settings of an GitHub organization you have Owner access, or you can transfer the ownership to an Organization later from your account. After creating the OAuth App, the Client ID and Client Secret are displayed.</p>
+</section>
+<section id="autoenrollment-providers">
+<h3>AUTOENROLLMENT_PROVIDERS<a class="headerlink" href="#autoenrollment-providers" title="Permalink to this headline">¶</a></h3>
+<p>If you want to give users that login with trusted provider the access to rent bikes immediately, without verifying and assigning them rights manually, the <code class="docutils literal notranslate"><span class="pre">AUTOENROLLMENT_PROVIDERS</span></code> environment variable is for you. Put the <cite>Social Application</cite> names there and seperate them by comma if its more than one provider.</p>
+<p>Users that login with a provider listed in <code class="docutils literal notranslate"><span class="pre">AUTOENROLLMENT_PROVIDERS</span></code> are placed in the <code class="docutils literal notranslate"><span class="pre">autoenrollment-rent</span></code> group. This group has by default the right to rent bikes.</p>
+</section>
+</section>
+<section id="bike-share-preferences">
+<h2>Bike Share Preferences<a class="headerlink" href="#bike-share-preferences" title="Permalink to this headline">¶</a></h2>
+<p>You can control some features how cykels sharing components behave. This is configured in the <cite>Bike Share Preferences</cite> section of the administration.</p>
+<section id="station-matching">
+<h3>Station matching<a class="headerlink" href="#station-matching" title="Permalink to this headline">¶</a></h3>
+<p>Distance in Meters in which bikes automatically snap to a station</p>
+</section>
+<section id="automatic-hiding">
+<h3>Automatic hiding<a class="headerlink" href="#automatic-hiding" title="Permalink to this headline">¶</a></h3>
+<p>In some cases, you may want to hide bikes that didn’t report a location for some hours from the GBFS (and therefore the user visible map).</p>
+</section>
+<section id="gbfs">
+<span id="configuration-cykel-gbfs"></span><h3>GBFS<a class="headerlink" href="#gbfs" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt><cite>Gbfs system id</cite></dt><dd><p>A short, lowercased, globally unique name for your bikesharing operation. This is used by apps to globally identify your system.</p>
+</dd>
+<dt><cite>System name</cite></dt><dd><p>Display name</p>
+</dd>
+<dt><cite>System short name</cite></dt><dd><p>If your display name is long, try to put a short, maybe appreviated version here.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="additional-administrators">
+<h2>Additional Administrators<a class="headerlink" href="#additional-administrators" title="Permalink to this headline">¶</a></h2>
+<p>When people have authenticated already, you can set <em>staff status</em> and/or <em>superuser status</em> on their user profiles. They still need a password to authenticate with the administration interface, you can set this with the password reset link on their profile page.</p>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="customization.html" class="btn btn-neutral float-right" title="Customization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="installation/manual.html" class="btn btn-neutral float-left" title="Manual deployment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  <div class="cc0">
+    <a href="https://creativecommons.org/publicdomain/zero/1.0/">
+      <svg aria-hidden="true" focusable="false" class="svg-inline--fa fa-creative-commons fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M245.83 214.87l-33.22 17.28c-9.43-19.58-25.24-19.93-27.46-19.93-22.13 0-33.22 14.61-33.22 43.84 0 23.57 9.21 43.84 33.22 43.84 14.47 0 24.65-7.09 30.57-21.26l30.55 15.5c-6.17 11.51-25.69 38.98-65.1 38.98-22.6 0-73.96-10.32-73.96-77.05 0-58.69 43-77.06 72.63-77.06 30.72-.01 52.7 11.95 65.99 35.86zm143.05 0l-32.78 17.28c-9.5-19.77-25.72-19.93-27.9-19.93-22.14 0-33.22 14.61-33.22 43.84 0 23.55 9.23 43.84 33.22 43.84 14.45 0 24.65-7.09 30.54-21.26l31 15.5c-2.1 3.75-21.39 38.98-65.09 38.98-22.69 0-73.96-9.87-73.96-77.05 0-58.67 42.97-77.06 72.63-77.06 30.71-.01 52.58 11.95 65.56 35.86zM247.56 8.05C104.74 8.05 0 123.11 0 256.05c0 138.49 113.6 248 247.56 248 129.93 0 248.44-100.87 248.44-248 0-137.87-106.62-248-248.44-248zm.87 450.81c-112.54 0-203.7-93.04-203.7-202.81 0-105.42 85.43-203.27 203.72-203.27 112.53 0 202.82 89.46 202.82 203.26-.01 121.69-99.68 202.82-202.84 202.82z"></path></svg>
+      <svg aria-hidden="true" focusable="false" class="svg-inline--fa fa-creative-commons-zero fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M247.6 8C389.4 8 496 118.1 496 256c0 147.1-118.5 248-248.4 248C113.6 504 0 394.5 0 256 0 123.1 104.7 8 247.6 8zm.8 44.7C130.2 52.7 44.7 150.6 44.7 256c0 109.8 91.2 202.8 203.7 202.8 103.2 0 202.8-81.1 202.8-202.8.1-113.8-90.2-203.3-202.8-203.3zm-.4 60.5c-81.9 0-102.5 77.3-102.5 142.8 0 65.5 20.6 142.8 102.5 142.8S350.5 321.5 350.5 256c0-65.5-20.6-142.8-102.5-142.8zm0 53.9c3.3 0 6.4.5 9.2 1.2 5.9 5.1 8.8 12.1 3.1 21.9l-54.5 100.2c-1.7-12.7-1.9-25.1-1.9-34.4 0-28.8 2-88.9 44.1-88.9zm40.8 46.2c2.9 15.4 3.3 31.4 3.3 42.7 0 28.9-2 88.9-44.1 88.9-13.5 0-32.6-7.7-20.1-26.4l60.9-105.2z"></path></svg>
+    </a>
+    To the extent possible under law, the creators of this documentation
+    have waived all copyrights and related or neighbouring rights
+    to this work through the
+    <a href="https://creativecommons.org/publicdomain/zero/1.0/">
+      Creative Commons Zero Universal (CC0 1.0) Public Domain Dedication.
+    </a>
+  </div>
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
