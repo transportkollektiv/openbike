@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Trackers &mdash; OpenBike  documentation</title>
+  <title>Skoetsel &mdash; OpenBike  documentation</title>
   
 
   
@@ -42,8 +42,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Skoetsel" href="skoetsel.html" />
-    <link rel="prev" title="Brand guidelines" href="brand.html" />
+    <link rel="next" title="User Guide" href="../user/index.html" />
+    <link rel="prev" title="Trackers" href="trackers.html" />
  
 
 <meta property="og:type" content="website" />
@@ -188,16 +188,16 @@
 <li class="toctree-l3"><a class="reference internal" href="brand.html#colors">Colors</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Trackers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#general-information">General Information</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#tracker-types">Tracker Types</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#location-detection">Location detection</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#data-transmission">Data transmission</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trackers.html">Trackers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trackers.html#general-information">General Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trackers.html#tracker-types">Tracker Types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="trackers.html#location-detection">Location detection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="trackers.html#data-transmission">Data transmission</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="skoetsel.html">Skoetsel</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Skoetsel</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">User Guide</a><ul>
@@ -261,14 +261,14 @@
     
       <li><a href="index.html">Operator documentation</a> &raquo;</li>
     
-  <li>Trackers</li>
+  <li>Skoetsel</li>
 
     
       <li class="wy-breadcrumbs-aside">
         
           
             
-              <a href="https://github.com/stadtulm/openbike/blob/master/docs/operator/trackers.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/stadtulm/openbike/blob/master/docs/operator/skoetsel.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -282,81 +282,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="trackers">
-<span id="operator-trackers"></span><h1>Trackers<a class="headerlink" href="#trackers" title="Permalink to this headline">¶</a></h1>
-<section id="general-information">
-<h2>General Information<a class="headerlink" href="#general-information" title="Permalink to this headline">¶</a></h2>
-<p>For free floating systems it is essential to know where the vehicles are located. Also station based systems benefit from the use of location trackers. Geolocation of vehicles are not only helpful for users to find them, but also very important for maintenance operations. It might be useful for finding stolen vehicles.</p>
-<p>It is possible to integrate different models of trackers into OpenBike. Every model needs a small software-adapter for OpenBike. There are some ready to use adapters for a small number of tracker models. But these adapters are really simple, and it should be very easy to write adapters for new tracker models, based on these adapters.</p>
-<p>It is possible to equip vehicles with multiple trackers. This can be for testing, backup or the use of different technologies.</p>
-<p>TODO: List of ready to use adapters</p>
-</section>
-<section id="tracker-types">
-<h2>Tracker Types<a class="headerlink" href="#tracker-types" title="Permalink to this headline">¶</a></h2>
-<p>Location trackers perform two main actions. First task is Geolocation detection, and transmission of the location data. Both actions can be archived with different technologies. In the following sections we explain these technolgies, so you can decide which of them fit the requirements of your local circumstances and you can decide based on these on which tracker model fits your needs.</p>
-<section id="location-detection">
-<h3>Location detection<a class="headerlink" href="#location-detection" title="Permalink to this headline">¶</a></h3>
+  <section id="skoetsel">
+<span id="operator-skoetsel"></span><h1>Skoetsel<a class="headerlink" href="#skoetsel" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="../_images/skoetsel-map-ui.png"><img alt="Skoetsel UI" src="../_images/skoetsel-map-ui.png" style="width: 100%;" /></a>
+<p><a class="reference external" href="https://github.com/stadtulm/skoetsel">Skoetsel</a> is a maintenance frontend for OpenBike that is supposed to give the operating crew a better overview over location and state of the bikes. Everyone with access to the <a class="reference external" href="https://github.com/stadtulm/cykel">cykel</a> backend can sign in.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Location detection will not be as precise as you know it from Smartphones, because these devices use a wide combination of different sensors and online information to optimize the result.</p>
+<p>Skoetsel is still under development. Design and UI might be subject to changes in the future.</p>
 </div>
-<section id="satellite-based-gps">
-<h4>Satellite based (GPS)<a class="headerlink" href="#satellite-based-gps" title="Permalink to this headline">¶</a></h4>
-<p>The most common method for geolocation detection are global navigation satellite systems (<a class="reference external" href="https://en.wikipedia.org/wiki/Satellite_navigation">GNSS</a>), commonly known as GPS. Currently there are four global systems in operation: <a class="reference external" href="https://en.wikipedia.org/wiki/Global_Positioning_System">Navstar GPS</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/GLONASS">GLONASS</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/BeiDou_Navigation_Satellite_System">BeiDou</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Galileo_(satellite_navigation)">Galileo</a>. But no worries, you don’t have to decide for one of these systems, because most modern GNSS sensors are using the signals of more than one of these systems. So your vehicle rental system should be safe from global conflicts.</p>
-<p>The accuracy of GNSS systems can be very precise. Affordable sensors can achieve precisions between 3 and 30 meters. Note that these values can only be achieved under optimal circumstances. Buildings, trees and other tall obstacles can significantly reduce precision. Satellite system based sensors are needing a view to the sky. So these systems are unable to operate in buildings or underground garages and will have problems detecting their location even under bridges.</p>
-<p>The biggest disadvantage of GNSS sensors is the high energy consumption. This might not such a big problem if you use vehicles with onboard power supply like E-Bikes or cars. On normal bikes you will use trackers with integrated batteries. Charging or swapping these batteries every few days or even weeks is very time consuming maintenance task which should be avoided.</p>
-<p>So there are some ways and tradeoffs to extend the runtime of these battieres:</p>
-<ul class="simple">
-<li><p>The GNSS sensor should not running all the time and instead wake up in bigger time intervals.</p></li>
-<li><p>It is recommended to use trackers with acceleration sensors. They can be configured to only wake up the GNSS sensor on movement. In most sharing systems, the vehicles are parked for the most of the time, so this could save a lot of energy. Some trackers allow to have a different wakeup interval in moving state and in parking state.</p></li>
-<li><p>Acquiring an new geolocation after sleeping needs some time. The first locations the sensor is detecting after a sleep are very unprecise, and the imprecision can be hundreds of meters, even kilometers. It can take some minutes until the precision is “good enough”. So you have to decide what “good enough” means - there is a trade-off between energy consumption and precision. Many trackers are able to configure a maxium time for location acquiring and a minimum precision.</p></li>
-</ul>
-<p>Using wifi for geolocation calulation can be a good backup strategy if GNSS trackers are running out of energy or vehicles are parked on places with no GNSS signal.</p>
-</section>
-<section id="wifi">
-<h4>Wifi<a class="headerlink" href="#wifi" title="Permalink to this headline">¶</a></h4>
-<p>Acquiring a <a class="reference external" href="https://en.wikipedia.org/wiki/Wi-Fi_positioning_system">geolocation using wifi</a> is very common on smartphones, because it allows a approximate geolocation without starting the energy intensive GNSS chip. With this method the device is scanning wifi networks around it and then matches them against a database. This database contains the hardware addresses of wifi networks and where they have been seen before. For these method it is essential that the scanned wifi networks have been mapped with their geolocation to the database before.
-It is very time-consuming to create such a database from scratch. There are some providers which mapped nearly the whole world with the help of smartphones. <a class="reference external" href="https://developers.google.com/maps/documentation/geolocation/overview">Google is providing access</a> to the biggest of these databases, but the usage is expensive (currently $4 per 1000 location calculations). There are also other commecial providers.</p>
-<p>For non-commercial projects <a class="reference external" href="https://location.services.mozilla.com/">Mozilla Location Services</a> is an alternative with good coverage in many places. Also the coverage can be improved by everyone with an android smartphone by using the mozilla stumbler app. The problem is that the future of this project seems a bit unclear. But the underlying software <a class="reference external" href="https://github.com/mozilla/ichnaea/">is open source</a> and can be used to create your own database.</p>
-<p>The big advantage of Wifi location calculation is the very low energy consumption and extreme low startup time compared to GNSS systems. It also works indoor and other environments without a view to the sky.</p>
-<p>The disadvantages of Wifi location calculation are that it works only in populated areas, where wifi networks are visible. Even bigger parks in cities could be a problem, but it is really dependent on the environment. Another problem is the dependency on a location database service and that their database needs coverage of the target area.</p>
-<p>The precision is extremely dependent on the number of visble wifi networks and the databse quality. Results between 10 and 100 meters are typical.</p>
-</section>
-</section>
-<section id="data-transmission">
-<h3>Data transmission<a class="headerlink" href="#data-transmission" title="Permalink to this headline">¶</a></h3>
-<p>After location calculation, this data needs to be transmitted to the OpenBike system.</p>
-<section id="cellular">
-<h4>Cellular<a class="headerlink" href="#cellular" title="Permalink to this headline">¶</a></h4>
-<p>Mobile phone networks have good coverage and the data we want to transmit is very small, so the usage of 2G networks is widely available way to transmit data. GPRS modules are very cheap, which result in very cheap ready to use products. Depending on the modules transmission of data via GPRS can be very energy consuming.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>2G networks are not future proof. Providers all around the world are fading out the support of 2G networks or even have them shut down completely.</p>
-</div>
-<p>Newer generations of trackers are using 4G based Narrowband IoT M2M protocols on the mobile phone networks, but we don’t have experiance with that kind of devices. In theory this should be more energy efficient than GPRS based systems.</p>
-<p>Keep in mind, that you need a SIM card (or eSIM configuration) for each cellular based tracker. There are more and more mobile plans for IoT based applications, even some with shared data contracts between SIM cards. But keep in mind there will be monthly costs for each tracker in operation.</p>
-</section>
-<section id="lorawan-the-things-network">
-<h4>LoRaWAN / The Things Network<a class="headerlink" href="#lorawan-the-things-network" title="Permalink to this headline">¶</a></h4>
-<p>LoRaWAN is a protocol for small bandwidth IoT networks operating in a license free frequency band. Dependent on configuration and local circumstances it can achieve transmission distances between a few hundred meters up to tens of kilometers. Most prominent example of LoRaWAN networks is the crowd sourced <a class="reference external" href="https://www.thethingsnetwork.org">The Things Network</a>. The network is free to use (under consideration of community rules) and everyone can add coverage by adding own gateways to the network.</p>
-<p>Transmitting data via LoRaWAN is extremely energy efficient. The amount of data which can transmitted via LoRaWAN is very limited, but it fits exactly the needs of a location tracker for a sharing system.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Before buying LoRaWAN hardware check which frequency band is used in your country.</p>
-</div>
-<p>The Things Network provides a <a class="reference external" href="https://www.thethingsnetwork.org/map">map with all active gateways</a>. The placement of gateways is very different, so the project <a class="reference external" href="https://ttnmapper.org/">TTN Mapper is crowdsourcing a coverage map</a>.</p>
-</section>
-<section id="using-users-smartphone">
-<h4>Using users smartphone<a class="headerlink" href="#using-users-smartphone" title="Permalink to this headline">¶</a></h4>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Using geolocation from users smartphone opens the possibility for users to fake the bike location.</p>
-</div>
-<p>There are some possibilities to transfer data via bluetooth from a tracker to a users smartphone which then transmits that data to the Server. That only works if the user is using a native app. Currently there is no native app for OpenBike.
-It is possible to use the GPS of the users smartphone via the WebApp. OpenBike is currently is using that for start and end of an rent, but that is more an optional geolocation source because using that geolocation is not enforced.</p>
-</section>
-</section>
-</section>
+<p>You can obtain more information about one specific bike by clicking on the corresponding icon. Available bikes are marked green, bikes that are in use blue and inactive bikes grey. In contrast to <a class="reference external" href="https://github.com/stadtulm/voorwiel">voorwiel</a> (the costumer frontend), skoetsel shows the reported locations of all tracker types, meaning not only primary trackers and locations reported by users, but also those marked as “internal” in the backend.</p>
+<p>If multiple trackers are marked active and their location differs more than 500 meters, a red line is displayed between them. If this happens, there might be some problem with the bike or one of the trackers (e.g. a low battery) and you should undertake some investigations.</p>
 </section>
 
 
@@ -365,8 +300,8 @@ It is possible to use the GPS of the users smartphone via the WebApp. OpenBike i
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="skoetsel.html" class="btn btn-neutral float-right" title="Skoetsel" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="brand.html" class="btn btn-neutral float-left" title="Brand guidelines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../user/index.html" class="btn btn-neutral float-right" title="User Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="trackers.html" class="btn btn-neutral float-left" title="Trackers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
