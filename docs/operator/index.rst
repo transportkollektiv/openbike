@@ -16,6 +16,7 @@ and try to document all the pitfalls, so you don't have to repeat our mistakes.
    brand
    locks
    trackers
+   skoetsel
 
 
 .. _example deployment for employees of the City of Ulm: https://openbike.ulm.dev
