@@ -15,7 +15,7 @@ Many locks can be broken with a simple bolt cutter. To avoid this, we focused on
    
    In practice, we saw many users preferring bikes with a lighter and more flexible chain over those with heavier ones. 
 
-We have also been using some foldable locks. With the corresponding case attached to the saddle bar, these can be transported easily. On the other hand, it is slightly more difficult to attach them e.g. to a street lamp, so the risk of the bike just being "carried away" is higher.
+We have also been using some foldable locks. With the corresponding case attached to the saddle bar, these can be transported easily. On the other hand, it is slightly more difficult to attach them e.g. to a street lamp, so the risk of the bike just being carried away is higher. What is more, we even experienced the case that someone bent such a lock so badly that it could not be opened any more.
 
 .. figure:: ../images/lock-foldable.jpg
    :width: 100%
