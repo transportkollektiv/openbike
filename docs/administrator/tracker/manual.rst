@@ -27,7 +27,7 @@ The following steps are to be executed as the ``openbike`` user. Before we actua
 
 We now clone the cykel-ttn source and install the dependencies::
 
-    (venv)$ git clone https://github.com/stadtulm/cykel-ttn.git /srv/openbike/cykel-ttn
+    (venv)$ git clone https://github.com/transportkollektiv/cykel-ttn.git /srv/openbike/cykel-ttn
     (venv)$ cd /srv/openbike/cykel-ttn
     (venv)$ pip3 install -U -r requirements.txt
 
@@ -105,6 +105,6 @@ If your system uses multiple different trackers that are all LoRaWAN/TTN based y
 
 
 .. _The Things Network: https://thethingsnetwork.org
-.. _cykel-ttn: https://github.com/stadtulm/cykel-ttn
-.. _tracker-ttn-decoders: https://github.com/stadtulm/tracker-ttn-decoders
+.. _cykel-ttn: https://github.com/transportkollektiv/cykel-ttn
+.. _tracker-ttn-decoders: https://github.com/transportkollektiv/tracker-ttn-decoders
 .. _systemds template units: http://0pointer.de/blog/projects/instances.html

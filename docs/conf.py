@@ -70,7 +70,7 @@ html_show_sourcelink = False
 
 html_context = {
     'display_github': True,
-    'github_user': 'stadtulm',
+    'github_user': 'transportkollektiv',
     'github_repo': 'openbike',
     'github_version': 'master',
     'conf_py_path': '/docs/', # needs leading and trailing slashes!
@@ -85,6 +85,8 @@ html_css_files = [
 html_additional_pages = {
     'index': 'index.html'
 }
+
+todo_include_todos = ('LIVEBUILD' in os.environ)
 
 def force_rerender(app, env, added, changed, removed):
     return ['index']

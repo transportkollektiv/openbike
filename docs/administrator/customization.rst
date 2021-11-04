@@ -32,14 +32,14 @@ If you want to override the about message, you don't have to change the ``src/i1
       "en": {
         "message": {
           "about": {
-            "html": "An experimental <a href='https://github.com/stadtulm'>open source</a> bikesharing."
+            "html": "An experimental <a href='https://github.com/transportkollektiv/openbike'>open source</a> bikesharing."
           }
         }
       },
       "de": {
         "message": {
           "about": {
-            "html": "Ein experimentelles <a href='https://github.com/stadtulm'>open source</a> Bikesharing."
+            "html": "Ein experimentelles <a href='https://github.com/transportkollektiv/openbike'>open source</a> Bikesharing."
           }
         }
       }
