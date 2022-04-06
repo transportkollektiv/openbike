@@ -21,8 +21,8 @@ import sphinx_rtd_theme
 # -- Project information -----------------------------------------------------
 
 project = 'OpenBike'
-copyright = '2020, Stadt Ulm'
-author = 'Stadt Ulm: Maximilian Richt, Katharina Schweiger, Constantin Müller, Stefan Kaufmann'
+copyright = 'transportkollektiv'
+author = 'Maximilian Richt, Katharina Schweiger, Constantin Müller, Stefan Kaufmann & das transportkollektiv'
 
 
 # -- General configuration ---------------------------------------------------

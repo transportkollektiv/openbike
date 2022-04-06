@@ -5,7 +5,7 @@ Operator documentation
 
 You want to operate your own OpenBike based bikesharing? Thats great!
 We've learned many things doing this ourselves with the `example deployment for employees of the City of Ulm`_
-and try to document all the pitfalls, so you don't have to repeat our mistakes.
+and tried to document all the pitfalls, so you don't have to repeat our mistakes.
 
 
 .. toctree::
