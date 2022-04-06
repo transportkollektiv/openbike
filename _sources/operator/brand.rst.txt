@@ -24,7 +24,7 @@ Use the green/black or black version on bright backgrounds, the white version on
 Source
 ------
 
-You can find the editable source files for the logo in the `OpenBike GitHub Repository <https://github.com/stadtulm/openbike>`_.
+You can find the editable source files for the logo in the `OpenBike GitHub Repository <https://github.com/transportkollektiv/openbike>`_.
 
 Fonts
 -----

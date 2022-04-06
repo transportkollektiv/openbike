@@ -4,7 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
@@ -110,8 +110,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../installation/manual.html#start-cykel-as-a-service">Start cykel as a service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../installation/manual.html#run-cykel-worker-as-a-service">Run cykel worker as a service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../installation/manual.html#get-voorwiel-source">Get voorwiel source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../installation/manual.html#configure-voorwiel">Configure voorwiel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../installation/manual.html#deploy-voorwiel">Deploy voorwiel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/manual.html#configure-voorwiel-1">Configure voorwiel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/manual.html#deploy-voorwiel-1">Deploy voorwiel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../installation/manual.html#get-skoetsel-source">Get skoetsel source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../installation/manual.html#configure-and-deploy-skoetsel">Configure and deploy skoetsel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../installation/manual.html#reverse-proxy-nginx">Reverse Proxy (nginx)</a></li>
@@ -268,7 +268,7 @@
         
           
             
-              <a href="https://github.com/stadtulm/openbike/blob/master/docs/administrator/tracker/manual.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/transportkollektiv/openbike/blob/master/docs/administrator/tracker/manual.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -289,11 +289,11 @@ To make OpenBike fully flexible in which way trackers send their locations, we�
 <section id="cykel-ttn">
 <h2>cykel-ttn<a class="headerlink" href="#cykel-ttn" title="Permalink to this headline">¶</a></h2>
 <p>In this case, we’re looking at the LoRaWAN based location trackers that send their data over the publicly available <a class="reference external" href="https://thethingsnetwork.org">The Things Network</a> (TTN).
-The <a class="reference external" href="https://github.com/stadtulm/cykel-ttn">cykel-ttn</a> adapter is a generic TTN adapter for GPS devices that supports lat/lon, accuracy and battery voltage status. It connects via MQTT to TTN and receives the incoming data packets from the trackers near instantly.
+The <a class="reference external" href="https://github.com/transportkollektiv/cykel-ttn">cykel-ttn</a> adapter is a generic TTN adapter for GPS devices that supports lat/lon, accuracy and battery voltage status. It connects via MQTT to TTN and receives the incoming data packets from the trackers near instantly.
 If your system uses multiple different trackers that are all LoRaWAN/TTN based you can deploy cykel-ttn once and just use different configuration. More to this usage below.</p>
 <section id="decoder">
 <h3>Decoder<a class="headerlink" href="#decoder" title="Permalink to this headline">¶</a></h3>
-<p>To use the cykel-ttn adapter you need to convert the incoming bytes from your lora device to a readable format. The TTN Console supports decoders/converters and validators for this use case. Look into the <a class="reference external" href="https://github.com/stadtulm/tracker-ttn-decoders">tracker-ttn-decoders</a> repository to find javascript decoders for some trackers, which you can use as decoder function in the things network console. In general each tracker model needs its own decoder script, but they are often provided by the supplier.</p>
+<p>To use the cykel-ttn adapter you need to convert the incoming bytes from your lora device to a readable format. The TTN Console supports decoders/converters and validators for this use case. Look into the <a class="reference external" href="https://github.com/transportkollektiv/tracker-ttn-decoders">tracker-ttn-decoders</a> repository to find javascript decoders for some trackers, which you can use as decoder function in the things network console. In general each tracker model needs its own decoder script, but they are often provided by the supplier.</p>
 <p>cykel-ttn expects <code class="docutils literal notranslate"><span class="pre">latitude</span></code> and <code class="docutils literal notranslate"><span class="pre">longitude</span></code> and/or <code class="docutils literal notranslate"><span class="pre">vbat</span></code> fields. Data packets without location are allowed in the case that the tracker doesn’t know its location but wants to send its remaining battery status. If fieldnames in decoder scripts differ, you can simply use the converter tab in the ttn console.</p>
 <p>Visit <code class="docutils literal notranslate"><span class="pre">https://eu1.cloud.thethings.network/console/applications/&lt;application-id&gt;/payload-formatters/uplink</span></code> to set the Formatter type to Javascript and enter the decoder function there.</p>
 </section>
@@ -304,7 +304,7 @@ If your system uses multiple different trackers that are all LoRaWAN/TTN based y
 </pre></div>
 </div>
 <p>We now clone the cykel-ttn source and install the dependencies:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(venv)$ git clone https://github.com/stadtulm/cykel-ttn.git /srv/openbike/cykel-ttn
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(venv)$ git clone https://github.com/transportkollektiv/cykel-ttn.git /srv/openbike/cykel-ttn
 (venv)$ cd /srv/openbike/cykel-ttn
 (venv)$ pip3 install -U -r requirements.txt
 </pre></div>

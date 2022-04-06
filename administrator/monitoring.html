@@ -4,7 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
@@ -110,8 +110,8 @@
 <li class="toctree-l3"><a class="reference internal" href="installation/manual.html#start-cykel-as-a-service">Start cykel as a service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/manual.html#run-cykel-worker-as-a-service">Run cykel worker as a service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/manual.html#get-voorwiel-source">Get voorwiel source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#configure-voorwiel">Configure voorwiel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#deploy-voorwiel">Deploy voorwiel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#configure-voorwiel-1">Configure voorwiel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#deploy-voorwiel-1">Deploy voorwiel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/manual.html#get-skoetsel-source">Get skoetsel source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/manual.html#configure-and-deploy-skoetsel">Configure and deploy skoetsel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/manual.html#reverse-proxy-nginx">Reverse Proxy (nginx)</a></li>
@@ -268,7 +268,7 @@
         
           
             
-              <a href="https://github.com/stadtulm/openbike/blob/master/docs/administrator/monitoring.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/transportkollektiv/openbike/blob/master/docs/administrator/monitoring.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -282,24 +282,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="id1">
-<h1>Monitoring<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+  <section id="monitoring-1">
+<h1>Monitoring<a class="headerlink" href="#monitoring-1" title="Permalink to this headline">¶</a></h1>
 <p>OpenBikes components, especially the ttn tracker adapters, provide monitoring endpoints at <code class="docutils literal notranslate"><span class="pre">/metrics</span></code>. There you find values in the <a class="reference external" href="https://prometheus.io/docs/instrumenting/exposition_formats/">text format</a> understood by monitoring tools like <a class="reference external" href="https://prometheus.io">Prometheus</a>.</p>
 <section id="setup">
 <h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
 <p>For installation of <a class="reference external" href="https://prometheus.io">Prometheus</a> see the official <a class="reference external" href="https://prometheus.io/docs/prometheus/latest/installation/">installation documentation</a>. They provide pre-compiled binaries working on many distributions, sometimes your distributions package repository also contains relatively current versions.</p>
 <p>Example prometheus configuration:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">global</span><span class="p">:</span>
-  <span class="nt">scrape_interval</span><span class="p">:</span>     <span class="l l-Scalar l-Scalar-Plain">15s</span> <span class="c1"># By default, scrape targets every 15 seconds.</span>
-  <span class="nt">evaluation_interval</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">15s</span> <span class="c1"># By default, evaluate rules every 15 seconds.</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">global</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">scrape_interval</span><span class="p">:</span><span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">15s</span><span class="w"> </span><span class="c1"># By default, scrape targets every 15 seconds.</span><span class="w"></span>
+<span class="w">  </span><span class="nt">evaluation_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span><span class="w"> </span><span class="c1"># By default, evaluate rules every 15 seconds.</span><span class="w"></span>
 
-<span class="nt">scrape_configs</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">job_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cykel-ttn</span>
-    <span class="nt">static_configs</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="nt">targets</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;localhost:9000&#39;</span><span class="p p-Indicator">]</span>
-  <span class="p p-Indicator">-</span> <span class="nt">job_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cykel-ttn-wifi</span>
-    <span class="nt">static_configs</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="nt">targets</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;localhost:9003&#39;</span><span class="p p-Indicator">]</span>
+<span class="nt">scrape_configs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cykel-ttn</span><span class="w"></span>
+<span class="w">    </span><span class="nt">static_configs</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">targets</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;localhost:9000&#39;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cykel-ttn-wifi</span><span class="w"></span>
+<span class="w">    </span><span class="nt">static_configs</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">targets</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;localhost:9003&#39;</span><span class="p p-Indicator">]</span><span class="w"></span>
 </pre></div>
 </div>
 <p>For each different tracker adapter, you need to add another scrape job. In the example above we’re using the easy <code class="docutils literal notranslate"><span class="pre">static_configs</span></code> for the list of hostname and port of the adapters, but you can also use more advanced stuff like the <code class="docutils literal notranslate"><span class="pre">file_sd_configs</span></code> or runtime based service discovery for docker swarm or kubernetes. Read the <a class="reference external" href="https://prometheus.io/docs/prometheus/latest/configuration/configuration/">Prometheus Configuration Documentation</a> if you want to know more about these.</p>
@@ -308,10 +308,10 @@
 <p>For displaying the monitored values (e.g. battery levels) we’re using <a class="reference external" href="https://grafana.com">Grafana</a> with the <a class="reference external" href="https://grafana.com/docs/grafana/latest/features/datasources/prometheus/">Prometheus data source</a>. Grafana is also available as package for your distribution, standalone linux binary or in your distributions repository. See the <a class="reference external" href="https://grafana.com/grafana/download">Grafana download page</a> for more details where to get and how to install.</p>
 <p>After installing and running through the first-use assistant, you can create your own dashboards with panels.</p>
 <p>One panel for displaying battery levels has these settings:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Line Chart</span>
-<span class="nt">Metric</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tracker_battery_volts</span>
-<span class="nt">Legend</span><span class="p">:</span> <span class="p p-Indicator">{{</span><span class="nv">device_id</span><span class="p p-Indicator">}}</span>
-<span class="nt">Left Y Axis Unit</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Volt (V)</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Line Chart</span><span class="w"></span>
+<span class="nt">Metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tracker_battery_volts</span><span class="w"></span>
+<span class="nt">Legend</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">device_id</span><span class="p p-Indicator">}}</span><span class="w"></span>
+<span class="nt">Left Y Axis Unit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Volt (V)</span><span class="w"></span>
 </pre></div>
 </div>
 <p>You can bring even more details in your charts, feel free to experiment and share them in this documentation.</p>
@@ -320,52 +320,52 @@
 <h3>Alerting<a class="headerlink" href="#alerting" title="Permalink to this headline">¶</a></h3>
 <p>For monitoring and graphing or displaying a dashboard, Prometheus and Grafana are all you need. If you want to be notified, you also need the <a class="reference external" href="https://prometheus.io/docs/alerting/latest/overview/">Alertmanager</a>.</p>
 <p>Example additions to your prometheus configuration if you want to be notified:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">rule_files</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="s">&quot;cykel.rules.yml&quot;</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">rule_files</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;cykel.rules.yml&quot;</span><span class="w"></span>
 
-<span class="nt">alerting</span><span class="p">:</span>
-  <span class="nt">alertmanagers</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="nt">path_prefix</span><span class="p">:</span> <span class="s">&#39;_alert&#39;</span>
-      <span class="nt">static_configs</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="nt">targets</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;localhost:9093&#39;</span><span class="p p-Indicator">]</span>
+<span class="nt">alerting</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">alertmanagers</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">path_prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;_alert&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">static_configs</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">targets</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;localhost:9093&#39;</span><span class="p p-Indicator">]</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The rules on which alerts are triggered are placed in their own <code class="docutils literal notranslate"><span class="pre">rule_files</span></code>. For example, we’re using rules based on these to get notified if trackers have low battery levels or if they didn’t send their location for a longer time.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">groups</span><span class="p">:</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cykel</span>
-  <span class="nt">rules</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">alert</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">TrackerLowBattery</span>
-    <span class="nt">expr</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tracker_battery_volts &lt; 3.3</span>
-    <span class="nt">labels</span><span class="p">:</span>
-      <span class="nt">severity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">warning</span>
-      <span class="nt">area</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">battery</span>
-    <span class="nt">annotations</span><span class="p">:</span>
-      <span class="nt">summary</span><span class="p">:</span> <span class="s">&quot;Low</span><span class="nv"> </span><span class="s">Battery</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Tracker</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$labels.device_id</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="nt">description</span><span class="p">:</span> <span class="s">&quot;Tracker</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$labels.device_id</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">has</span><span class="nv"> </span><span class="s">low</span><span class="nv"> </span><span class="s">battery</span><span class="nv"> </span><span class="s">voltage:</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$value</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">V&quot;</span>
-  <span class="p p-Indicator">-</span> <span class="nt">alert</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">TrackerCriticalBattery</span>
-    <span class="nt">expr</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tracker_battery_volts &lt; 3.05</span>
-    <span class="nt">labels</span><span class="p">:</span>
-      <span class="nt">severity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">critical</span>
-      <span class="nt">area</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">battery</span>
-    <span class="nt">annotations</span><span class="p">:</span>
-      <span class="nt">summary</span><span class="p">:</span> <span class="s">&quot;Critical</span><span class="nv"> </span><span class="s">Battery</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Tracker</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$labels.device_id</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="nt">description</span><span class="p">:</span> <span class="s">&quot;Tracker</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$labels.device_id</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">has</span><span class="nv"> </span><span class="s">critical</span><span class="nv"> </span><span class="s">battery</span><span class="nv"> </span><span class="s">voltage:</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$value</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">V&quot;</span>
-  <span class="p p-Indicator">-</span> <span class="nt">alert</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">TrackerLastUpdate45mAgo</span>
-    <span class="nt">expr</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">time() - tracker_last_data_update &gt; 60 * 45</span>
-    <span class="nt">labels</span><span class="p">:</span>
-      <span class="nt">severity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">info</span>
-      <span class="nt">area</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">uplink</span>
-    <span class="nt">annotations</span><span class="p">:</span>
-      <span class="nt">summary</span><span class="p">:</span>  <span class="s">&quot;Last</span><span class="nv"> </span><span class="s">Update</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">Tracker</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$labels.device_id</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">more</span><span class="nv"> </span><span class="s">than</span><span class="nv"> </span><span class="s">45m</span><span class="nv"> </span><span class="s">ago&quot;</span>
-      <span class="nt">description</span><span class="p">:</span> <span class="s">&quot;Tracker</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$labels.device_id</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">last</span><span class="nv"> </span><span class="s">reported</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">humanizeDuration</span><span class="nv"> </span><span class="s">$value</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">ago&quot;</span>
-  <span class="p p-Indicator">-</span> <span class="nt">alert</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">TrackerLastUpdate2hAgo</span>
-    <span class="nt">expr</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">time() - tracker_last_data_update &gt; 60 * 60 * 2</span>
-    <span class="nt">labels</span><span class="p">:</span>
-      <span class="nt">severity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">warning</span>
-      <span class="nt">area</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">uplink</span>
-    <span class="nt">annotations</span><span class="p">:</span>
-      <span class="nt">summary</span><span class="p">:</span> <span class="s">&quot;Last</span><span class="nv"> </span><span class="s">Update</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">Tracker</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$labels.device_id</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">more</span><span class="nv"> </span><span class="s">than</span><span class="nv"> </span><span class="s">2h</span><span class="nv"> </span><span class="s">ago&quot;</span>
-      <span class="nt">description</span><span class="p">:</span> <span class="s">&quot;Tracker</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$labels.device_id</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">last</span><span class="nv"> </span><span class="s">reported</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">humanizeDuration</span><span class="nv"> </span><span class="s">$value</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">ago&quot;</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">groups</span><span class="p">:</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cykel</span><span class="w"></span>
+<span class="w">  </span><span class="nt">rules</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">alert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TrackerLowBattery</span><span class="w"></span>
+<span class="w">    </span><span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tracker_battery_volts &lt; 3.3</span><span class="w"></span>
+<span class="w">    </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warning</span><span class="w"></span>
+<span class="w">      </span><span class="nt">area</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">battery</span><span class="w"></span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Low</span><span class="nv"> </span><span class="s">Battery</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Tracker</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$labels.device_id</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Tracker</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$labels.device_id</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">has</span><span class="nv"> </span><span class="s">low</span><span class="nv"> </span><span class="s">battery</span><span class="nv"> </span><span class="s">voltage:</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$value</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">V&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">alert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TrackerCriticalBattery</span><span class="w"></span>
+<span class="w">    </span><span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tracker_battery_volts &lt; 3.05</span><span class="w"></span>
+<span class="w">    </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">critical</span><span class="w"></span>
+<span class="w">      </span><span class="nt">area</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">battery</span><span class="w"></span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Critical</span><span class="nv"> </span><span class="s">Battery</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Tracker</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$labels.device_id</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Tracker</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$labels.device_id</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">has</span><span class="nv"> </span><span class="s">critical</span><span class="nv"> </span><span class="s">battery</span><span class="nv"> </span><span class="s">voltage:</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$value</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">V&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">alert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TrackerLastUpdate45mAgo</span><span class="w"></span>
+<span class="w">    </span><span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">time() - tracker_last_data_update &gt; 60 * 45</span><span class="w"></span>
+<span class="w">    </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">info</span><span class="w"></span>
+<span class="w">      </span><span class="nt">area</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uplink</span><span class="w"></span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w">  </span><span class="s">&quot;Last</span><span class="nv"> </span><span class="s">Update</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">Tracker</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$labels.device_id</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">more</span><span class="nv"> </span><span class="s">than</span><span class="nv"> </span><span class="s">45m</span><span class="nv"> </span><span class="s">ago&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Tracker</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$labels.device_id</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">last</span><span class="nv"> </span><span class="s">reported</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">humanizeDuration</span><span class="nv"> </span><span class="s">$value</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">ago&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">alert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TrackerLastUpdate2hAgo</span><span class="w"></span>
+<span class="w">    </span><span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">time() - tracker_last_data_update &gt; 60 * 60 * 2</span><span class="w"></span>
+<span class="w">    </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warning</span><span class="w"></span>
+<span class="w">      </span><span class="nt">area</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uplink</span><span class="w"></span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Last</span><span class="nv"> </span><span class="s">Update</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">Tracker</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$labels.device_id</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">more</span><span class="nv"> </span><span class="s">than</span><span class="nv"> </span><span class="s">2h</span><span class="nv"> </span><span class="s">ago&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Tracker</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$labels.device_id</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">last</span><span class="nv"> </span><span class="s">reported</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">humanizeDuration</span><span class="nv"> </span><span class="s">$value</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">ago&quot;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Where these alerts are delivered is configured in the <a class="reference external" href="https://prometheus.io/docs/alerting/latest/overview/">Alertmanager</a> configuration. Have a look into their documentation for the different alert receivers (like Slack, Pagerduty) and how to configure them. Even more receivers are listed in the <a class="reference external" href="https://prometheus.io/docs/operating/integrations/#alertmanager-webhook-receiver">Integrations Documentation</a>.</p>

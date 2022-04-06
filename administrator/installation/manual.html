@@ -4,7 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
@@ -110,8 +110,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#start-cykel-as-a-service">Start cykel as a service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#run-cykel-worker-as-a-service">Run cykel worker as a service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#get-voorwiel-source">Get voorwiel source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#configure-voorwiel">Configure voorwiel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#deploy-voorwiel">Deploy voorwiel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-voorwiel-1">Configure voorwiel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deploy-voorwiel-1">Deploy voorwiel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#get-skoetsel-source">Get skoetsel source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configure-and-deploy-skoetsel">Configure and deploy skoetsel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#reverse-proxy-nginx">Reverse Proxy (nginx)</a></li>
@@ -268,7 +268,7 @@
         
           
             
-              <a href="https://github.com/stadtulm/openbike/blob/master/docs/administrator/installation/manual.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/transportkollektiv/openbike/blob/master/docs/administrator/installation/manual.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -288,7 +288,7 @@
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Even though we try to make it straightforward to run OpenBike, it still requires some Linux experience to get it right.</p>
-</div>
+</aside>
 <p>We wrote this guide based on our setup on the Linux distribution Ubuntu 18.04 but it should work very similar on other modern distributions, especially on all systemd-based ones.</p>
 <section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
@@ -304,7 +304,7 @@
 <p>Please, do not run OpenBike without HTTPS encryption. You’ll handle user accounts and thanks to <a class="reference external" href="https://letsencrypt.org">Let’s Encrypt</a>
 SSL certificates can be obtained for free these days. We also <em>do not</em> provide support for HTTP-only
 installations except for development purposes.</p>
-</div>
+</aside>
 </section>
 <section id="unix-user">
 <h2>Unix user<a class="headerlink" href="#unix-user" title="Permalink to this headline">¶</a></h2>
@@ -351,7 +351,7 @@ $ source /srv/openbike/venv/bin/activate
 </pre></div>
 </div>
 <p>We now clone the cykel source and install the dependencies:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(venv)$ git clone https://github.com/stadtulm/cykel.git /srv/openbike/cykel
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(venv)$ git clone https://github.com/transportkollektiv/cykel.git /srv/openbike/cykel
 (venv)$ cd /srv/openbike/cykel
 (venv)$ pip3 install -U -r requirements.txt
 (venv)$ pip3 install -U gunicorn
@@ -379,7 +379,7 @@ $ source /srv/openbike/venv/bin/activate
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Never deploy a site into production with DEBUG turned on.</p>
-</div>
+</aside>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">DATABASE_URL</span></code></dt><dd><p>Here you have configure the access to your database in a format supported by <a class="reference external" href="https://github.com/jacobian/dj-database-url">dj-database-url</a>. If your PostgreSQL with PostGIS is residing on the same host, try <code class="docutils literal notranslate"><span class="pre">postgis:///openbike</span></code> For user/password auth on another host, use <code class="docutils literal notranslate"><span class="pre">postgis://username:password&#64;host/database</span></code></p>
 </dd>
@@ -476,14 +476,14 @@ To create this directory, we create the file <code class="docutils literal notra
 <section id="get-voorwiel-source">
 <h2>Get voorwiel source<a class="headerlink" href="#get-voorwiel-source" title="Permalink to this headline">¶</a></h2>
 <p>To let people rent the bikes, you need a visual interface. voorwiel is the default UI for cykel. The following steps are again executed as the <code class="docutils literal notranslate"><span class="pre">openbike</span></code> user:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/stadtulm/voorwiel.git /srv/openbike/voorwiel
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/transportkollektiv/voorwiel.git /srv/openbike/voorwiel
 $ cd /srv/openbike/voorwiel
 $ npm ci
 </pre></div>
 </div>
 </section>
-<section id="configure-voorwiel">
-<span id="id1"></span><h2>Configure voorwiel<a class="headerlink" href="#configure-voorwiel" title="Permalink to this headline">¶</a></h2>
+<section id="configure-voorwiel-1">
+<span id="configure-voorwiel"></span><h2>Configure voorwiel<a class="headerlink" href="#configure-voorwiel-1" title="Permalink to this headline">¶</a></h2>
 <p>The configuration of voorwiel currently still happens before the build process. The configuration happens in the <code class="docutils literal notranslate"><span class="pre">config/config.production.js</span></code> file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">ENV</span> <span class="o">=</span> <span class="s2">&quot;production&quot;</span><span class="p">;</span>
 <span class="n">var</span> <span class="n">TITLE</span> <span class="o">=</span> <span class="s2">&quot;dev.bike - open bikesharing for everyone&quot;</span><span class="p">;</span>
@@ -512,8 +512,8 @@ $ npm ci
 </dd>
 </dl>
 </section>
-<section id="deploy-voorwiel">
-<span id="id2"></span><h2>Deploy voorwiel<a class="headerlink" href="#deploy-voorwiel" title="Permalink to this headline">¶</a></h2>
+<section id="deploy-voorwiel-1">
+<span id="deploy-voorwiel"></span><h2>Deploy voorwiel<a class="headerlink" href="#deploy-voorwiel-1" title="Permalink to this headline">¶</a></h2>
 <p>voorwiel and its configuration is built into a big bundle of javascript. Run the following command to build voorwiel and drop the result into the <code class="docutils literal notranslate"><span class="pre">dist</span></code> folder:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ NODE_ENV=production NPM_CONFIG_PRODUCTION=true npm run build
 </pre></div>
@@ -522,7 +522,7 @@ $ npm ci
 <section id="get-skoetsel-source">
 <h2>Get skoetsel source<a class="headerlink" href="#get-skoetsel-source" title="Permalink to this headline">¶</a></h2>
 <p>To help yourself operating the sharing, having an easier look at the bikes for maintenance etc, skoetsel is the UI for operators and maintenance staff. The following steps are again executed as the <code class="docutils literal notranslate"><span class="pre">openbike</span></code> user:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/stadtulm/skoetsel.git /srv/openbike/skoetsel
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/transportkollektiv/skoetsel.git /srv/openbike/skoetsel
 $ cd /srv/openbike/skoetsel
 $ npm ci
 </pre></div>

@@ -4,7 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
@@ -110,8 +110,8 @@
 <li class="toctree-l3"><a class="reference internal" href="installation/manual.html#start-cykel-as-a-service">Start cykel as a service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/manual.html#run-cykel-worker-as-a-service">Run cykel worker as a service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/manual.html#get-voorwiel-source">Get voorwiel source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#configure-voorwiel">Configure voorwiel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#deploy-voorwiel">Deploy voorwiel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#configure-voorwiel-1">Configure voorwiel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#deploy-voorwiel-1">Deploy voorwiel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/manual.html#get-skoetsel-source">Get skoetsel source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/manual.html#configure-and-deploy-skoetsel">Configure and deploy skoetsel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/manual.html#reverse-proxy-nginx">Reverse Proxy (nginx)</a></li>
@@ -268,7 +268,7 @@
         
           
             
-              <a href="https://github.com/stadtulm/openbike/blob/master/docs/administrator/configuration.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/transportkollektiv/openbike/blob/master/docs/administrator/configuration.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -282,8 +282,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="configuration">
-<span id="id1"></span><h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+  <section id="configuration-1">
+<span id="configuration"></span><h1>Configuration<a class="headerlink" href="#configuration-1" title="Permalink to this headline">¶</a></h1>
 <p>cykel is mostly configured graphically with the django-admin based administration interface. This is reachable at <code class="docutils literal notranslate"><span class="pre">https://&lt;host&gt;/admin</span></code>.</p>
 <p>Things that can’t be configured graphically in the admin are provided as environment variables. This is for example needed to provide the Database Credentials or the Hostnames where cykel is reachable at.</p>
 <p>Only in some edge cases you may have to directly modify the <code class="docutils literal notranslate"><span class="pre">cykel/settings.py</span></code>.</p>
@@ -309,7 +309,7 @@
 <p class="admonition-title">Note</p>
 <p>The <strong>Callback URL</strong> you are asked by the provider to put on their allow list is <code class="docutils literal notranslate"><span class="pre">https://&lt;cykel</span> <span class="pre">host&gt;/auth/&lt;name&gt;/login/callback/</span></code></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> is the name of your created social application in the cykel admin, this is why you should use short and lowercase provider names there.</p>
-</div>
+</aside>
 </div></blockquote>
 <section id="twitter">
 <h3>Twitter<a class="headerlink" href="#twitter" title="Permalink to this headline">¶</a></h3>

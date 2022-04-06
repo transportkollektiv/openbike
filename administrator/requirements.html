@@ -4,7 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
@@ -110,8 +110,8 @@
 <li class="toctree-l3"><a class="reference internal" href="installation/manual.html#start-cykel-as-a-service">Start cykel as a service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/manual.html#run-cykel-worker-as-a-service">Run cykel worker as a service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/manual.html#get-voorwiel-source">Get voorwiel source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#configure-voorwiel">Configure voorwiel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#deploy-voorwiel">Deploy voorwiel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#configure-voorwiel-1">Configure voorwiel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/manual.html#deploy-voorwiel-1">Deploy voorwiel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/manual.html#get-skoetsel-source">Get skoetsel source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/manual.html#configure-and-deploy-skoetsel">Configure and deploy skoetsel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/manual.html#reverse-proxy-nginx">Reverse Proxy (nginx)</a></li>
@@ -268,7 +268,7 @@
         
           
             
-              <a href="https://github.com/stadtulm/openbike/blob/master/docs/administrator/requirements.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/transportkollektiv/openbike/blob/master/docs/administrator/requirements.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -297,7 +297,7 @@
 <p class="admonition-title">Warning</p>
 <p>Do not ever run without SSL in production. Your users deserve encrypted connections and thanks to
 <a class="reference external" href="https://letsencrypt.org">Let’s Encrypt</a> SSL certificates can be obtained for free these days.</p>
-</div>
+</aside>
 </li>
 <li><p>A <strong>Domain</strong> and <strong>access to DNS</strong>. cykel and voorwiel run on different subdomains, so you need the ability to create multiple subdomains and point the <cite>A</cite> and <cite>AAAA</cite> DNS records to your server.</p></li>
 <li><p>One or multiple <strong>Authentication Providers</strong>. These are OAuth2-compatible services your users already have (like Google, Twitter, Instagram, GitHub, …) or you run yourself (Nextcloud, Keycloak, …). OpenBike does not provide registration features by itself, so you don’t have to handle email addresses and forgotten passwords. Instead, OpenBike is using <strong>django-allauth</strong> for integrating third-party login, so look into <a class="reference external" href="https://django-allauth.readthedocs.io/en/latest/providers.html">their documentation for the list of providers they already support</a>.</p></li>

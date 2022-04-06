@@ -75,7 +75,7 @@ python installation::
 
 We now clone the cykel source and install the dependencies::
 
-    (venv)$ git clone https://github.com/stadtulm/cykel.git /srv/openbike/cykel
+    (venv)$ git clone https://github.com/transportkollektiv/cykel.git /srv/openbike/cykel
     (venv)$ cd /srv/openbike/cykel
     (venv)$ pip3 install -U -r requirements.txt
     (venv)$ pip3 install -U gunicorn
@@ -212,7 +212,7 @@ Get voorwiel source
 
 To let people rent the bikes, you need a visual interface. voorwiel is the default UI for cykel. The following steps are again executed as the ``openbike`` user::
 
-    $ git clone https://github.com/stadtulm/voorwiel.git /srv/openbike/voorwiel
+    $ git clone https://github.com/transportkollektiv/voorwiel.git /srv/openbike/voorwiel
     $ cd /srv/openbike/voorwiel
     $ npm ci
 
@@ -272,7 +272,7 @@ Get skoetsel source
 
 To help yourself operating the sharing, having an easier look at the bikes for maintenance etc, skoetsel is the UI for operators and maintenance staff. The following steps are again executed as the ``openbike`` user::
 
-    $ git clone https://github.com/stadtulm/skoetsel.git /srv/openbike/skoetsel
+    $ git clone https://github.com/transportkollektiv/skoetsel.git /srv/openbike/skoetsel
     $ cd /srv/openbike/skoetsel
     $ npm ci
 

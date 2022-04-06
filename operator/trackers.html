@@ -4,7 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
@@ -110,8 +110,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../administrator/installation/manual.html#start-cykel-as-a-service">Start cykel as a service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../administrator/installation/manual.html#run-cykel-worker-as-a-service">Run cykel worker as a service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../administrator/installation/manual.html#get-voorwiel-source">Get voorwiel source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../administrator/installation/manual.html#configure-voorwiel">Configure voorwiel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../administrator/installation/manual.html#deploy-voorwiel">Deploy voorwiel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../administrator/installation/manual.html#configure-voorwiel-1">Configure voorwiel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../administrator/installation/manual.html#deploy-voorwiel-1">Deploy voorwiel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../administrator/installation/manual.html#get-skoetsel-source">Get skoetsel source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../administrator/installation/manual.html#configure-and-deploy-skoetsel">Configure and deploy skoetsel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../administrator/installation/manual.html#reverse-proxy-nginx">Reverse Proxy (nginx)</a></li>
@@ -268,7 +268,7 @@
         
           
             
-              <a href="https://github.com/stadtulm/openbike/blob/master/docs/operator/trackers.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/transportkollektiv/openbike/blob/master/docs/operator/trackers.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -299,7 +299,7 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Location detection will not be as precise as you know it from Smartphones, because these devices use a wide combination of different sensors and online information to optimize the result.</p>
-</div>
+</aside>
 <section id="satellite-based-gps">
 <h4>Satellite based (GPS)<a class="headerlink" href="#satellite-based-gps" title="Permalink to this headline">¶</a></h4>
 <p>The most common method for geolocation detection are global navigation satellite systems (<a class="reference external" href="https://en.wikipedia.org/wiki/Satellite_navigation">GNSS</a>), commonly known as GPS. Currently there are four global systems in operation: <a class="reference external" href="https://en.wikipedia.org/wiki/Global_Positioning_System">Navstar GPS</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/GLONASS">GLONASS</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/BeiDou_Navigation_Satellite_System">BeiDou</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Galileo_(satellite_navigation)">Galileo</a>. But no worries, you don’t have to decide for one of these systems, because most modern GNSS sensors are using the signals of more than one of these systems. So your vehicle rental system should be safe from global conflicts.</p>
@@ -332,7 +332,7 @@ It is very time-consuming to create such a database from scratch. There are some
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>2G networks are not future proof. Providers all around the world are fading out the support of 2G networks or even have them shut down completely.</p>
-</div>
+</aside>
 <p>Newer generations of trackers are using 4G based Narrowband IoT M2M protocols on the mobile phone networks, but we don’t have experiance with that kind of devices. In theory this should be more energy efficient than GPRS based systems.</p>
 <p>Keep in mind, that you need a SIM card (or eSIM configuration) for each cellular based tracker. There are more and more mobile plans for IoT based applications, even some with shared data contracts between SIM cards. But keep in mind there will be monthly costs for each tracker in operation.</p>
 </section>
@@ -343,7 +343,7 @@ It is very time-consuming to create such a database from scratch. There are some
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Before buying LoRaWAN hardware check which frequency band is used in your country.</p>
-</div>
+</aside>
 <p>The Things Network provides a <a class="reference external" href="https://www.thethingsnetwork.org/map">map with all active gateways</a>. The placement of gateways is very different, so the project <a class="reference external" href="https://ttnmapper.org/">TTN Mapper is crowdsourcing a coverage map</a>.</p>
 </section>
 <section id="using-users-smartphone">
@@ -351,7 +351,7 @@ It is very time-consuming to create such a database from scratch. There are some
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Using geolocation from users smartphone opens the possibility for users to fake the bike location.</p>
-</div>
+</aside>
 <p>There are some possibilities to transfer data via bluetooth from a tracker to a users smartphone which then transmits that data to the Server. That only works if the user is using a native app. Currently there is no native app for OpenBike.
 It is possible to use the GPS of the users smartphone via the WebApp. OpenBike is currently is using that for start and end of an rent, but that is more an optional geolocation source because using that geolocation is not enforced.</p>
 </section>
