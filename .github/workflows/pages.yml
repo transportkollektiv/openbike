@@ -22,6 +22,6 @@ jobs:
         keep_history: true
         build_dir: html
         jekyll: false
-        fqdn: docs.openbike.ulm.dev
+        fqdn: docs.openbike.dev
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
