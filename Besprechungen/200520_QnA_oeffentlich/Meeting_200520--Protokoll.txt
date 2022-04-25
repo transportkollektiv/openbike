@@ -1,0 +1,118 @@
+
+
+20. Mai 2020, Anfang vmtl. 19:00 Uhr
+https://bbb.ulm.dev/b/openbike
+ca. 10 Teilnehmö
+
+
+
+Der Protokollstand hier kann grobe Fehler, falsche Namen, eine irreführende Reihenfolge und alles mögliche andere, möglicherweise aber nicht die Essenz enthalten -> schaut bitte nochmal drüber.
+Nebenbei: Protokoll fängt eigtl. erst so ab 19:40 an! Das davor ist ein weißer Fleck
+
+
+
+LoRa-WAN wird genutzt, gute Abdeckung eigentlich über ganz Ulm.
+
+
+
+
+nilo: in Halle läuft das System schon (wohl auch mit Auto-Enrollment).
+openbike.eigenbaukombinat.de
+https://github.com/Eigenbaukombinat/cykel-manual-tracker
+https://www.thingsmobile.com/de/private/thingsmobile
+
+
+Tracker: Noch nicht final geklärt (bzw. wird nie eine einzige Technik sein)
+
+
+
+Datenübertragung
+-> Tracker: regelmäßig, bei Bewegung häufiger
+-> Zum Ausleihzeitpunkt Austausch der Location
+
+Bei der Rückgabe wird häufig die Rückgabe vergessen
+
+Denken über einen eigenen OAuth-Provider nach (aber so, dass nicht alle Systeme voneinander wissen müssen)
+
+Im praktischen Test werden im Vorfeld Fahrräder geclaimed (aber nicht in Ulm, dort muss ja lokal die Nummer eingegeben werden. In Ulm kennen die Leute die Zahlen der Schlösser recht schnell)
+
+Ausleihzeiten: 10-15min typ.
+
+
+Brücke Intelligence <-> Data noch nicht gut geschlossen (Fahrradstatus-Infos wie "bewegt", "transportiert", "steht still" nicht mit den Position Reports und dem Buchungsstatus ("ausgeliehen"/"frei") korreliert)
+
+Was Stephan (?) braucht: real-time clock (aber Hauptaufgabe: einschätzen, wie lange der ESP im Tiefschlaf war)
+
+Gedanken: Pluggable Architecture
+
+Anwendungsfälle für API sammeln. (Damit jedes System pro Stadt eine eigene Business-Logik enthalten kann)
+
+Halle? sagt: Viele unterschiedliche Fahrräder, ggf. Fotos hochladen? -> GBFS hat sowas nicht
+
+[Mit GBFS ist wohl https://github.com/NABSA/gbfs gemeint]
+
+Konzept: Eigene Fahrräder zur Verfügung stellen. (Diese Frage kommt wohl immer mal auf) -> Wird gemeinhin als nicht so sinnvoll gesehen. [Die Runde ist sich bewusst, dass das jetzt gerade subjektiv ist. Muss kein schlechtes Modell sein]
+
+
+In Ulm bisher ein Rad weggekommen (viele verschiedene Mythen ranken sich um die letzten empfangenen Daten)
+
+Fahrrad wiederfinden kann sehr schwierig sein. (Zuständigkeit, schlechtes Wetter)
+
+Problem war: Spannung niedrig, wurde aber trotzdem ausgeliehen.
+
+Aber seit den Wifi-Trackern waren Radfindeprobleme besser.
+
+Es gibt ein Feature, dass Räder, die sich nicht melden, aus der API verschwinden. (Besser wäre aber, wenn eine Warnmeldung erzeugt werden würde)
+
+
+(Corona ist ein bisschen dazwischengekommen)
+
+
+Terminhinweis: 29./30. Mai 2020 Online: https://www.future-mobility-camp.de/ !
+
+
+cargobikeHH hat ca. 10% Radverlust pro Jahr (kein Tracking)
+	Ersatzteilfinanzierung über Soliparties
+	Räder i. d. R. selbstgebaut + gespendet - verschiedenste Formen/Ladeflächen
+	Stehen an einem öffentlichen Punkt. Zahlenschloss + Link zu einer Telegram-Gruppe.
+	Räder typischerweise angeschlossen (aber sind so schwer, dass sie niemand klaut, wenn sie nur abgeschlossen sind).
+	
+	Reparatur/Maintenance ist ein größeres Problem als Verlust
+
+
+
+Fahrrad mit Nabenmotor -> geht ab. Problem aber: Bremsenerhitzung bei Abfahrten
+
+cargobikeHH: ein bisschen unsicher wg. Haftungsfragen -> Muss an die Vernunft appelierten.
+
+-> Soziale Erwartungen an Telegram-Gruppe sind niedriger als groß gelabeltes OpenBike - welche BoilerPlate-Optionen anzuhaken zu machen?
+
+Bzgl. Hamburg: 
+	- ADFC-geförderte Räder werden über Wordpress ausgeliehen.
+- FreeFloating mit Lastenrädern ist fraglich; derzeit wird das kaum genutzt
+- Reservierungen: da muss man hinterhersein, dass die Rückgabe rechtzeitig ist.
+- (Frage Definition "Reservierung" - ist 15min vorher oder 2 Tage vorher gemeint)
+
+LEDs drauf machen - Strom drauf
+
+Telegram-Ansatz: ggf. wäre ein cooler Gedanke, eine Community gleich mit dabei zu haben, wo man Fragen/Antworten stellen kann. (Auf den Kanal auch einen Telegram-Bot setzen?)
+
+Ist aber ggü. professionellem, verlässlich kommunikativem Team ein ganz anderes Feeling.
+
+
+
+Frage: Schlösser einsetzen, die den Pin wechseln können?
+Antwort: Solche Schlösser gibt es, aber den Nutzön eine Schlüsseländerung aufzudrücken wird nicht klappen.
+
+Crypto*-Schlösser (5 kg)
+
+*-Schlösser: Die pure Öffnung der Schlösser ist schon schwierig zu vermitteln. Es gibt einen Unterschied zwischen Entsperrung und Entriegelung -> Hürde.
+
+Axa-Schlösser nicht so cool - Ummantelung löst sich, weitere Probleme.
+CryptoNight-Schlösser: viel zu einfach, Code zu wechseln (ausversehen)
+
+-> Schlossempfehlungen willkommen
+
+
+
+
