@@ -12,7 +12,6 @@ It is possible to integrate different models of trackers into OpenBike. Every mo
 
 It is possible to equip vehicles with multiple trackers. This can be for testing, backup or the use of different technologies.
 
-TODO: List of ready to use adapters
 
 Tracker Types
 -------------
@@ -90,3 +89,79 @@ Using users smartphone
 
 There are some possibilities to transfer data via bluetooth from a tracker to a users smartphone which then transmits that data to the Server. That only works if the user is using a native app. Currently there is no native app for OpenBike.
 It is possible to use the GPS of the users smartphone via the WebApp. OpenBike is currently is using that for start and end of an rent, but that is more an optional geolocation source because using that geolocation is not enforced. 
+
+
+List
+----
+
+Here is a list with some trackers we have been using in Ulm. Since we have good TTN coverage all across the town, we exusively used LoRaWAN for data transmission. To compare battery lifetime, we configured all trackers with the same period of sending: every 1.5 min while moving, every 30 min while stationary (GPS trackers) or just every 10 min (WiFi trackers).
+
+
+`Dragino LGT-92 (GPS) <https://www.dragino.com/products/lora/item/142-lgt-92.html>`_
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. figure:: ../images/tracker-dragino.jpg
+   :width: 100%
+   :alt: tracker dragino
+   
+   LGT-92 tracker placed in waterproof junction box
+
+**Estimated battery lifetime**: 9 weeks
+
+**Decoder script**: `lgt92-1.5.1.js <https://github.com/stadtulm/tracker-ttn-decoders/blob/master/lgt92-1.5.1.js>`_
+
+We wrote a `blogpost <https://ulm.dev/2020/09/25/lora-tracker-konfigurieren/>`_ in German on how we configured these.
+
+`Digitalmatter Yabby (GPS) <https://www.digitalmatter.com/devices/yabby-lorawan/>`_
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. figure:: ../images/tracker-yabby.jpg
+   :width: 100%
+   :alt: tracker yabby
+   
+   Yabby tracker assembled to luggage carrier
+
+**Estimated battery lifetime**: 7 weeks
+
+**Decoder script**: `dm-yabby.js <https://github.com/stadtulm/tracker-ttn-decoders/blob/master/dm-yabby.js>`_
+
+`Digitalmatter Oyster (GPS) <https://www.digitalmatter.com/devices/oyster-lorawan/>`_
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: ../images/tracker-oyster.jpg
+   :width: 100%
+   :alt: tracker oyster
+   
+   Finding a good place of assembly for this tracker can be a bit challenging
+
+**Estimated battery lifetime**: 7 weeks
+
+**Decoder script**: `dm-yabby.js <https://github.com/stadtulm/tracker-ttn-decoders/blob/master/dm-yabby.js>`_
+
+`OpenBike Lortinchen (WiFi) <https://github.com/stadtulm/Lora-Wifi-Location-Tracker>`_
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: ../images/tracker-wifi.jpg
+   :width: 100%
+   :alt: tracker lortinchen
+   
+   Lortinchen placed in waterproof battery pack (wrapped with tape, to make it really waterproof...) and assembled with Velcro
+
+**Estimated battery lifetime**: 10 weeks
+
+See the `Lora-Wifi-Location-Tracker repo <https://github.com/stadtulm/Lora-Wifi-Location-Tracker>`_ for design, firmware and decoder files.
+
+
+
+`OpenBike Feuchtraumabzweigdose (GPS + WiFi) <https://github.com/stadtulm/feuchtraumabzweigdose>`_
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. image:: ../images/tracker-fad.jpg
+   :width: 100%
+   :alt: tracker feuchtraumabzweigdose
+
+This one is still quite experimental and not fully tested yet. Go to the `feuchtraumabzweigdose repo <https://github.com/stadtulm/feuchtraumabzweigdose>`_ if you want to give it a try.
+
+
+Others
+^^^^^^
+
+You have had some experiences with other tracker models? We highly appreciate `pull requests <https://github.com/stadtulm/OpenBike/pulls>`_! :)
